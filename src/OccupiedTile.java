@@ -13,6 +13,6 @@ public class OccupiedTile extends Tile{
 
     @Override
     public Piece getPiece() {
-        return piece;
+        return this.piece;
     }
 }
