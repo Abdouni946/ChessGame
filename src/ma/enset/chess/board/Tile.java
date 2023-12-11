@@ -3,7 +3,7 @@ package ma.enset.chess.board;
 import ma.enset.chess.pieces.Piece;
 
 public abstract class Tile {
-    private int coordinate;
+    protected final int coordinate;
 
     public Tile(int coordinate) {
         this.coordinate = coordinate;
