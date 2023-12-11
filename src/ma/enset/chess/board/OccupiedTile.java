@@ -1,3 +1,5 @@
+package ma.enset.chess.board;
+
 public class OccupiedTile extends Tile{
     Piece piece;
 

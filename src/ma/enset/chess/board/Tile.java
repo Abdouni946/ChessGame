@@ -1,3 +1,5 @@
+package ma.enset.chess.board;
+
 public abstract class Tile {
     private int coordinate;
 

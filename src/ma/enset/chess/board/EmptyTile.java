@@ -1,3 +1,5 @@
+package ma.enset.chess.board;
+
 public class EmptyTile extends Tile{
     public EmptyTile(int coordinate) {
         super(coordinate);
