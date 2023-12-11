@@ -1,8 +1,9 @@
 public class OccupiedTile extends Tile{
     Piece piece;
 
-    public OccupiedTile(int coordinate) {
+    public OccupiedTile(int coordinate, Piece piece) {
         super(coordinate);
+        this.piece = piece;
     }
 
     @Override
