@@ -3,9 +3,9 @@ package ma.enset.chess.board;
 import ma.enset.chess.pieces.Piece;
 
 public class OccupiedTile extends Tile{
-    Piece piece;
+    private final Piece piece;
 
-    public OccupiedTile(int coordinate, Piece piece) {
+    public OccupiedTile(final int coordinate, Piece piece) {
         super(coordinate);
         this.piece = piece;
     }

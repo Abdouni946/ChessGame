@@ -5,7 +5,7 @@ import ma.enset.chess.pieces.Piece;
 public abstract class Tile {
     protected final int coordinate;
 
-    public Tile(int coordinate) {
+    public Tile(final int coordinate) {
         this.coordinate = coordinate;
     }
 
