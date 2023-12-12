@@ -19,6 +19,13 @@ public abstract class Tile {
         return ImmutableMap.copyOf(emptyTileMap);
     }
 
+    public static Tile createTile(final int coordinate, final Piece piece) {
+        if (piece == null) {
+            return EMPTY_TILE.get(coordinate);
+        }
+        return new OccupiedTile(coordinate, piece);
+    }
+
     private Tile(final int coordinate) {
         this.coordinate = coordinate;
     }
