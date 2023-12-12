@@ -1,5 +1,6 @@
 package ma.enset.chess.board;
 
+import com.google.common.collect.ImmutableMap;
 import ma.enset.chess.pieces.Piece;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public abstract class Tile {
         return ImmutableMap.copyOf(emptyTileMap);
     }
 
-    public Tile(final int coordinate) {
+    private Tile(final int coordinate) {
         this.coordinate = coordinate;
     }
 
