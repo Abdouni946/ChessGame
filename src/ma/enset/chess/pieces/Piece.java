@@ -1,6 +1,7 @@
 package ma.enset.chess.pieces;
 
 import ma.enset.chess.Alliance;
+import ma.enset.chess.board.Board;
 import ma.enset.chess.board.Move;
 
 import java.util.List;
