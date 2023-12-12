@@ -8,10 +8,9 @@ import java.util.Map;
 
 public abstract class Tile {
     protected final int coordinate;
+    private static final Map<Integer, EmptyTile> EMPTY_TILE_CACHE = createAllEmptyTiles();
 
-    private static final Map<Integer, EmptyTile> EMPTY_TILE = createAllPossibleEmptyTiles();
-
-    private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
+    private static Map<Integer, EmptyTile> createAllEmptyTiles() {
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
         for (int i = 0; i < 64; ++i) {
             emptyTileMap.put(i, new EmptyTile(i));
@@ -21,7 +20,7 @@ public abstract class Tile {
 
     public static Tile createTile(final int coordinate, final Piece piece) {
         if (piece == null) {
-            return EMPTY_TILE.get(coordinate);
+            return EMPTY_TILE_CACHE.get(coordinate);
         }
         return new OccupiedTile(coordinate, piece);
     }

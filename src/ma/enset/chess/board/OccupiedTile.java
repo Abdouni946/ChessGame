@@ -2,10 +2,10 @@ package ma.enset.chess.board;
 
 import ma.enset.chess.pieces.Piece;
 
-public class OccupiedTile extends Tile{
+public final class OccupiedTile extends Tile{
     private final Piece piece;
 
-    public OccupiedTile(final int coordinate, Piece piece) {
+    private OccupiedTile(final int coordinate, final Piece piece) {
         super(coordinate);
         this.piece = piece;
     }

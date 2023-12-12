@@ -2,8 +2,8 @@ package ma.enset.chess.board;
 
 import ma.enset.chess.pieces.Piece;
 
-public class EmptyTile extends Tile{
-    public EmptyTile(final int coordinate) {
+public final class EmptyTile extends Tile{
+    private EmptyTile(final int coordinate) {
         super(coordinate);
     }
 
