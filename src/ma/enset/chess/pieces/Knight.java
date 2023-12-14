@@ -3,6 +3,7 @@ package ma.enset.chess.pieces;
 import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
 import ma.enset.chess.board.Board;
+import ma.enset.chess.board.BoardUtils;
 import ma.enset.chess.board.Move;
 import ma.enset.chess.board.Tile;
 
@@ -22,7 +23,7 @@ public class Knight extends Piece {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int legalMoveCoordinates : LEGAL_MOVES_COORDINATES) {
             destinationCoordinates = this.position + legalMoveCoordinates;
-            if(true /* isValidTileCoor */) {
+            if(BoardUtils.isValidTileCoor(destinationCoordinates)) {
                 final Tile destinationTile = board.getTile(destinationCoordinates);
                 if(!destinationTile.isOccupied()) {
                     legalMoves.add(new Move());
