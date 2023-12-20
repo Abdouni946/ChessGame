@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Pawn extends Piece {
     private final static int[] LEGAL_MOVES_OFFSETS = { 7, 8, 9, 16 };
-    Pawn(final int position, final Alliance alliance) {
+    public Pawn(final int position, final Alliance alliance) {
         super(position, alliance);
     }
 
