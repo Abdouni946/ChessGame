@@ -3,6 +3,8 @@ package ma.enset.chess.pieces;
 import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
 import ma.enset.chess.board.*;
+import ma.enset.chess.board.Move.MajorMove;
+import ma.enset.chess.board.Move.AttackMove;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +18,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public Collection<Move> calcLegalMoves(Board board) {
+    public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
             final int destinationCoordinate = this.position + candidateOffset;
@@ -26,12 +28,12 @@ public class Knight extends Piece {
                 }
                 final Tile destinationTile = board.getTile(destinationCoordinate);
                 if(!destinationTile.isOccupied()) {
-                    legalMoves.add(new Move.MajorMove(board, this, destinationCoordinate));
+                    legalMoves.add(new MajorMove(board, this, destinationCoordinate));
                 } else {
                     final Piece occupingPiece = destinationTile.getPiece();
                     final Alliance occupingPieceAlliance = occupingPiece.getAlliance();
                     if (this.alliance != occupingPieceAlliance) {
-                        legalMoves.add(new Move.AttackMove(board, this, destinationCoordinate, occupingPiece));
+                        legalMoves.add(new AttackMove(board, this, destinationCoordinate, occupingPiece));
                     }
                 }
             }
