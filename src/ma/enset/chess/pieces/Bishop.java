@@ -5,6 +5,8 @@ import ma.enset.chess.Alliance;
 import ma.enset.chess.board.Board;
 import ma.enset.chess.board.BoardUtils;
 import ma.enset.chess.board.Move;
+import ma.enset.chess.board.Move.AttackMove;
+import ma.enset.chess.board.Move.MajorMove;
 import ma.enset.chess.board.Tile;
 
 import java.util.ArrayList;
@@ -29,12 +31,12 @@ public class Bishop extends Piece {
                 if (BoardUtils.isValidTileCoor(destinationCoordinate)) {
                     final Tile destinationTile = board.getTile(destinationCoordinate);
                     if(!destinationTile.isOccupied()) {
-                        legalMoves.add(new Move.MajorMove(board, this, destinationCoordinate));
+                        legalMoves.add(new MajorMove(board, this, destinationCoordinate));
                     } else {
                         final Piece occupingPiece = destinationTile.getPiece();
                         final Alliance occupingPieceAlliance = occupingPiece.getAlliance();
                         if (this.alliance != occupingPieceAlliance) {
-                            legalMoves.add(new Move.AttackMove(board, this, destinationCoordinate, occupingPiece));
+                            legalMoves.add(new AttackMove(board, this, destinationCoordinate, occupingPiece));
                         }
                         break;
                     }
