@@ -2,6 +2,7 @@ package ma.enset.chess.board;
 
 import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
+import ma.enset.chess.pieces.Knight;
 import ma.enset.chess.pieces.Piece;
 
 import java.util.List;
@@ -25,6 +26,47 @@ public class Board {
         return ImmutableList.copyOf(tiles);
     }
 
+    public static Board CreateStandardBoard(){
+        final Builder builder = new Builder();
+        //Black Layout
+        builder.setPiece(new ROOK(0,Alliance.BLACK));
+        builder.setPiece(new Knight(1,Alliance.BLACK));
+        builder.setPiece(new BISHOP(2,Alliance.BLACK));
+        builder.setPiece(new QUEEN(3,Alliance.BLACK));
+        builder.setPiece(new KING(4,Alliance.BLACK));
+        builder.setPiece(new BISHOP(5,Alliance.BLACK));
+        builder.setPiece(new Knight(6,Alliance.BLACK));
+        builder.setPiece(new ROOK(7,Alliance.BLACK));
+        builder.setPiece(new PAWN(8,Alliance.BLACK));
+        builder.setPiece(new PAWN(9,Alliance.BLACK));
+        builder.setPiece(new PAWN(10,Alliance.BLACK));
+        builder.setPiece(new PAWN(11,Alliance.BLACK));
+        builder.setPiece(new PAWN(12,Alliance.BLACK));
+        builder.setPiece(new PAWN(13,Alliance.BLACK));
+        builder.setPiece(new PAWN(14,Alliance.BLACK));
+        builder.setPiece(new PAWN(15,Alliance.BLACK));
+//White Layout
+        builder.setPiece(new PAWN(48,Alliance.WHITE));
+        builder.setPiece(new PAWN(49,Alliance.WHITE));
+        builder.setPiece(new PAWN(50,Alliance.WHITE));
+        builder.setPiece(new PAWN(51,Alliance.WHITE));
+        builder.setPiece(new PAWN(52,Alliance.WHITE));
+        builder.setPiece(new PAWN(53Alliance.WHITE));
+        builder.setPiece(new PAWN(54,Alliance.WHITE));
+        builder.setPiece(new PAWN(55,Alliance.WHITE));
+        builder.setPiece(new ROOK(56,Alliance.WHITE));
+        builder.setPiece(new Knight(57,Alliance.WHITE));
+        builder.setPiece(new BISHOP(58,Alliance.WHITE));
+        builder.setPiece(new QUEEN(59,Alliance.WHITE));
+        builder.setPiece(new KING(60,Alliance.WHITE));
+        builder.setPiece(new BISHOP(61,Alliance.WHITE));
+        builder.setPiece(new Knight(62,Alliance.WHITE));
+        builder.setPiece(new ROOK(63,Alliance.WHITE));
+//White to move
+        builder.setMoveMaker(Alliance.WHITE);
+
+        return builder.build();
+    }
 
     //The Builder Pattern allows you to vary the chess game's setup
     public static class Builder {
