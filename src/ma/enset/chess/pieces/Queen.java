@@ -13,10 +13,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Bishop extends Piece {
-    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = { -9, -7, +7, +9 };
-
-    Bishop(final int position, final Alliance alliance) { super(position, alliance); }
+public class Queen extends Piece {
+    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = { -9, -8, -7, -1, +1, +7, +8, +9 };
+    Queen(final int position, final Alliance alliance) { super(position, alliance); }
 
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {
@@ -47,9 +46,9 @@ public class Bishop extends Piece {
     }
 
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
-        return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == 7));
+        return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == -1) || (offset == 7));
     }
     private static boolean isEighthColExclusion(final int currentPos, final int offset) {
-        return BoardUtils.EIGHTH_COL[currentPos] && ((offset == -7) || (offset == 9));
+        return BoardUtils.EIGHTH_COL[currentPos] && ((offset == -7) || (offset == 1) || (offset == 9));
     }
 }
