@@ -5,7 +5,7 @@ import ma.enset.chess.pieces.Piece;
 public final class OccupiedTile extends Tile{
     private final Piece piece;
 
-    private OccupiedTile(final int coordinate, final Piece piece) {
+    OccupiedTile(final int coordinate, final Piece piece) {
         super(coordinate);
         this.piece = piece;
     }

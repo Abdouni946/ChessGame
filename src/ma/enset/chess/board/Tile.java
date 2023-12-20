@@ -25,7 +25,7 @@ public abstract class Tile {
         return new OccupiedTile(coordinate, piece);
     }
 
-    private Tile(final int coordinate) {
+    Tile(final int coordinate) {
         this.coordinate = coordinate;
     }
 
