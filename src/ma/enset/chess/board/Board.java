@@ -5,18 +5,37 @@ import ma.enset.chess.Alliance;
 import ma.enset.chess.pieces.Knight;
 import ma.enset.chess.pieces.Piece;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 public class Board {
-
     private final List<Tile> gameBoard;
+    private final Collection<Piece> whitePieces;
+    private final Collection<Piece> blackPieces;
 
     //Constructor
     private Board(Builder builder) {
         this.gameBoard = createGameBoard(builder);
+        this.whitePieces= calculateActivePieces(gameBoard , Alliance.WHITE);
+        this.blackPieces= calculateActivePieces(gameBoard , Alliance.BLACK);
     }
+    private Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, Alliance alliance) {
+
+        final List<Piece> activatePieces =  new ArrayList<>();
+        for(final Tile tile : gameBoard) {
+            if(tile.isOccupied()){
+                final Piece piece = tile.getPiece();
+                if(piece.getAlliance() == alliance) {
+                    activatePieces.add(piece);
+                }
+            }
+        }
+        return ImmutableList.copyOf(activatePieces);
+    }
+
     public Tile getTile(final int coordinates) {
-        return null;
+        return gameBoard.get(coordinates);
     }
     private static List<Tile> createGameBoard(final Builder builder) {
         final Tile[] tiles = new Tile[BoardUtils.NUM_TILES];
@@ -45,7 +64,7 @@ public class Board {
         builder.setPiece(new PAWN(13,Alliance.BLACK));
         builder.setPiece(new PAWN(14,Alliance.BLACK));
         builder.setPiece(new PAWN(15,Alliance.BLACK));
-//White Layout
+        //White Layout
         builder.setPiece(new PAWN(48,Alliance.WHITE));
         builder.setPiece(new PAWN(49,Alliance.WHITE));
         builder.setPiece(new PAWN(50,Alliance.WHITE));
@@ -62,7 +81,8 @@ public class Board {
         builder.setPiece(new BISHOP(61,Alliance.WHITE));
         builder.setPiece(new Knight(62,Alliance.WHITE));
         builder.setPiece(new ROOK(63,Alliance.WHITE));
-//White to move
+
+        //White to move
         builder.setMoveMaker(Alliance.WHITE);
 
         return builder.build();
@@ -70,22 +90,19 @@ public class Board {
 
     //The Builder Pattern allows you to vary the chess game's setup
     public static class Builder {
-
         Map<Integer, Piece> BoardConfig ;
         Alliance nextMoveMaker;
-        public Builder ( ) {
+        public Builder () {
 
         }
         public Builder setPiece(final Piece piece){
             this.BoardConfig.put(piece.getPosition(),piece);
             return this;
         }
-
         public Builder setMoveMaker(final Alliance nextMoveMaker){
             this.nextMoveMaker=nextMoveMaker;
             return this;
         }
-
         public Board build (){  // when we invoke build , it will create a new board
             return new  Board(this);
         }
