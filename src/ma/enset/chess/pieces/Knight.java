@@ -2,12 +2,10 @@ package ma.enset.chess.pieces;
 
 import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.BoardUtils;
-import ma.enset.chess.board.Move;
-import ma.enset.chess.board.Tile;
+import ma.enset.chess.board.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Knight extends Piece {
@@ -18,23 +16,22 @@ public class Knight extends Piece {
     }
 
     @Override
-    public List<Move> calcLegalMoves(Board board) {
-        int destinationCoordinates;
+    public Collection<Move> calcLegalMoves(Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
-            destinationCoordinates = this.position + candidateOffset;
+            final int destinationCoordinates = this.position + candidateOffset;
             if(BoardUtils.isValidTileCoor(destinationCoordinates)) {
                 if (isFirstColExclusion(this.position, candidateOffset) || isSecondColExclusion(this.position, candidateOffset) || isSeventhColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset)) {
                     continue;
                 }
                 final Tile destinationTile = board.getTile(destinationCoordinates);
                 if(!destinationTile.isOccupied()) {
-                    legalMoves.add(new Move());
+                    legalMoves.add(new MajorMove());
                 } else {
                     final Piece occupingPiece = destinationTile.getPiece();
                     final Alliance occupingPieceAlliance = occupingPiece.getAlliance();
                     if (this.alliance != occupingPieceAlliance) {
-                        legalMoves.add(new Move());
+                        legalMoves.add(new AttackMove());
                     }
                 }
             }

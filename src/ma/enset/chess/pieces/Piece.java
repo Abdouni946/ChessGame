@@ -4,7 +4,7 @@ import ma.enset.chess.Alliance;
 import ma.enset.chess.board.Board;
 import ma.enset.chess.board.Move;
 
-import java.util.List;
+import java.util.Collection;
 
 public abstract class Piece {
     protected final int position;
@@ -23,5 +23,5 @@ public abstract class Piece {
         return alliance;
     }
 
-    public abstract List<Move> calcLegalMoves(final Board board);
+    public abstract Collection<Move> calcLegalMoves(final Board board);
 }
