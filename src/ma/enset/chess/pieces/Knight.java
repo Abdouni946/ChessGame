@@ -19,10 +19,9 @@ public class Knight extends Piece {
 
     @Override
     public List<Move> calcLegalMoves(Board board) {
-        int destinationCoordinates;
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
-            destinationCoordinates = this.position + candidateOffset;
+            final int destinationCoordinates = this.position + candidateOffset;
             if(BoardUtils.isValidTileCoor(destinationCoordinates)) {
                 if (isFirstColExclusion(this.position, candidateOffset) || isSecondColExclusion(this.position, candidateOffset) || isSeventhColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset)) {
                     continue;
