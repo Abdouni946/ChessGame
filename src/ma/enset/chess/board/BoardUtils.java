@@ -5,6 +5,8 @@ public class BoardUtils {
     public static final boolean[] SECOND_COL = null;
     public static final boolean[] SEVENTH_COL = null;
     public static final boolean[] EIGHTH_COL = null;
+    public static final int NUM_TILES = 64;
+
 
     private BoardUtils() {
         throw new RuntimeException("BoardUtils can't be instantiated");
