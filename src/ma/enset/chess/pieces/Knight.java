@@ -8,6 +8,7 @@ import ma.enset.chess.board.Move;
 import ma.enset.chess.board.Tile;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Knight extends Piece {
@@ -18,7 +19,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public List<Move> calcLegalMoves(Board board) {
+    public Collection<Move> calcLegalMoves(Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
             final int destinationCoordinates = this.position + candidateOffset;
