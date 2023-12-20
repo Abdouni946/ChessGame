@@ -21,6 +21,6 @@ public class BoardUtils {
         return col;
     }
     public static boolean isValidTileCoor(final int coordinates) {
-        return coordinates >= 0 && coordinates < 64;
+        return coordinates >= 0 && coordinates < NUM_TILES;
     }
 }
