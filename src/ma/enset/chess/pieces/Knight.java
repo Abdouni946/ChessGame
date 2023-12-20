@@ -24,7 +24,7 @@ public class Knight extends Piece {
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
             destinationCoordinates = this.position + candidateOffset;
             if(BoardUtils.isValidTileCoor(destinationCoordinates)) {
-                if (isFirstColExclusion(this.position, candidateOffset) || isSecondColExclusion(this.position, candidateOffset) || isSeventhColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset) ||) {
+                if (isFirstColExclusion(this.position, candidateOffset) || isSecondColExclusion(this.position, candidateOffset) || isSeventhColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset)) {
                     continue;
                 }
                 final Tile destinationTile = board.getTile(destinationCoordinates);
