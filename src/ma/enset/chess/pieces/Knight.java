@@ -19,19 +19,19 @@ public class Knight extends Piece {
     public Collection<Move> calcLegalMoves(Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
-            final int destinationCoordinates = this.position + candidateOffset;
-            if(BoardUtils.isValidTileCoor(destinationCoordinates)) {
+            final int destinationCoordinate = this.position + candidateOffset;
+            if(BoardUtils.isValidTileCoor(destinationCoordinate)) {
                 if (isFirstColExclusion(this.position, candidateOffset) || isSecondColExclusion(this.position, candidateOffset) || isSeventhColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset)) {
                     continue;
                 }
-                final Tile destinationTile = board.getTile(destinationCoordinates);
+                final Tile destinationTile = board.getTile(destinationCoordinate);
                 if(!destinationTile.isOccupied()) {
-                    legalMoves.add(new MajorMove());
+                    legalMoves.add(new Move.MajorMove(board, this, destinationCoordinate));
                 } else {
                     final Piece occupingPiece = destinationTile.getPiece();
                     final Alliance occupingPieceAlliance = occupingPiece.getAlliance();
                     if (this.alliance != occupingPieceAlliance) {
-                        legalMoves.add(new AttackMove());
+                        legalMoves.add(new Move.AttackMove(board, this, destinationCoordinate, occupingPiece));
                     }
                 }
             }
