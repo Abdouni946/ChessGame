@@ -2,10 +2,7 @@ package ma.enset.chess.pieces;
 
 import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.BoardUtils;
-import ma.enset.chess.board.Move;
-import ma.enset.chess.board.Tile;
+import ma.enset.chess.board.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,12 +26,12 @@ public class Knight extends Piece {
                 }
                 final Tile destinationTile = board.getTile(destinationCoordinates);
                 if(!destinationTile.isOccupied()) {
-                    legalMoves.add(new Move());
+                    legalMoves.add(new MajorMove());
                 } else {
                     final Piece occupingPiece = destinationTile.getPiece();
                     final Alliance occupingPieceAlliance = occupingPiece.getAlliance();
                     if (this.alliance != occupingPieceAlliance) {
-                        legalMoves.add(new Move());
+                        legalMoves.add(new AttackMove());
                     }
                 }
             }
