@@ -13,7 +13,8 @@ import java.util.Collection;
 import java.util.List;
 
 public class Pawn extends Piece {
-    private final static int[] LEGAL_MOVES_OFFSETS = { 7, 8, 9, 16 };
+    private final static int[] LEGAL_MOVES_OFFSETS = {7, 8, 9, 16};
+
     public Pawn(final int position, final Alliance alliance) {
         super(position, alliance);
     }
@@ -45,7 +46,7 @@ public class Pawn extends Piece {
                 }
             } else if (candidateOffset == 7 &&
                     !((BoardUtils.EIGHTH_COL[this.position] && this.alliance.isWhite()) ||
-                      (BoardUtils.FIRST_COL[this.position] && this.alliance.isBlack()))) { // Attacking pawn move 1
+                            (BoardUtils.FIRST_COL[this.position] && this.alliance.isBlack()))) { // Attacking pawn move 1
                 if (board.getTile(destinationCoordinate).isOccupied()) {
                     final Piece occupingPiece = board.getTile(destinationCoordinate).getPiece();
                     if (this.alliance != occupingPiece.getAlliance()) {
@@ -55,7 +56,7 @@ public class Pawn extends Piece {
                 }
             } else if (candidateOffset == 9 &&
                     !((BoardUtils.FIRST_COL[this.position] && this.alliance.isWhite()) ||
-                      (BoardUtils.EIGHTH_COL[this.position] && this.alliance.isBlack()))) { // Attacking pawn move 2
+                            (BoardUtils.EIGHTH_COL[this.position] && this.alliance.isBlack()))) { // Attacking pawn move 2
                 if (board.getTile(destinationCoordinate).isOccupied()) {
                     final Piece occupingPiece = board.getTile(destinationCoordinate).getPiece();
                     if (this.alliance != occupingPiece.getAlliance()) {

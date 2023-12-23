@@ -14,21 +14,23 @@ import java.util.Collection;
 import java.util.List;
 
 public class King extends Piece {
-    private final static int[] LEGAL_MOVES_OFFSETS = { -9, -8, -7, -1, 1, 7, 8, 9 };
+    private final static int[] LEGAL_MOVES_OFFSETS = {-9, -8, -7, -1, 1, 7, 8, 9};
 
-    public King(final int position, final Alliance alliance) { super(position, alliance); }
+    public King(final int position, final Alliance alliance) {
+        super(position, alliance);
+    }
 
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {
             final int destinationCoordinate = this.position + candidateOffset;
-            if(BoardUtils.isValidTileCoor(destinationCoordinate)) {
+            if (BoardUtils.isValidTileCoor(destinationCoordinate)) {
                 if (isFirstColExclusion(this.position, candidateOffset) || isEighthColExclusion(this.position, candidateOffset)) {
                     continue;
                 }
                 final Tile destinationTile = board.getTile(destinationCoordinate);
-                if(!destinationTile.isOccupied()) {
+                if (!destinationTile.isOccupied()) {
                     legalMoves.add(new MajorMove(board, this, destinationCoordinate));
                 } else {
                     final Piece occupingPiece = destinationTile.getPiece();
@@ -46,9 +48,11 @@ public class King extends Piece {
     public String toString() {
         return pieceType.King.toString();
     }
+
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
         return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == -1) || (offset == 7));
     }
+
     private static boolean isEighthColExclusion(final int currentPos, final int offset) {
         return BoardUtils.EIGHTH_COL[currentPos] && ((offset == 1) || (offset == 7) || (offset == 9));
     }

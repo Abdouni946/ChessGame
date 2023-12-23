@@ -25,11 +25,13 @@ public abstract class Piece {
         return this.alliance;
     }
 
-    public boolean isFirstMove() { return this.isFirstMove; }
+    public boolean isFirstMove() {
+        return this.isFirstMove;
+    }
 
     public abstract Collection<Move> calcLegalMoves(final Board board);
 
-    public enum pieceType{
+    public enum pieceType {
 
         Pawn("P"),
         Rook("R"),
@@ -40,12 +42,12 @@ public abstract class Piece {
 
         private String pieceName;
 
-        pieceType(final String pieceName){
-            this.pieceName=pieceName;
+        pieceType(final String pieceName) {
+            this.pieceName = pieceName;
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return this.pieceName;
         }
     }
