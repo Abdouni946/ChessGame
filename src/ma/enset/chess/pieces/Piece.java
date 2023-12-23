@@ -30,11 +30,13 @@ public abstract class Piece {
         return this.alliance;
     }
 
-    public boolean isFirstMove() { return this.isFirstMove; }
+    public boolean isFirstMove() {
+        return this.isFirstMove;
+    }
 
     public abstract Collection<Move> calcLegalMoves(final Board board);
 
-    public enum pieceType{
+    public enum pieceType {
 
         Pawn("P") {
             @Override
@@ -75,8 +77,8 @@ public abstract class Piece {
         public abstract boolean isKing();
         private String pieceName;
 
-        pieceType(final String pieceName){
-            this.pieceName=pieceName;
+        pieceType(final String pieceName) {
+            this.pieceName = pieceName;
         }
 
         @Override

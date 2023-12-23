@@ -16,22 +16,25 @@ public class BoardUtils {
     private BoardUtils() {
         throw new RuntimeException("BoardUtils can't be instantiated");
     }
+
     private static boolean[] initCol(int colNumber) {
         final boolean[] col = new boolean[NUM_TILES];
         do {
             col[colNumber] = true;
             colNumber += NUM_TILES_PER_ROW;
-        } while(colNumber < NUM_TILES);
+        } while (colNumber < NUM_TILES);
         return col;
     }
+
     private static boolean[] initRow(int rowNumber) {
         final boolean[] row = new boolean[NUM_TILES];
         do {
             row[rowNumber] = true;
             ++rowNumber;
-        } while(rowNumber % NUM_TILES_PER_ROW != 0);
+        } while (rowNumber % NUM_TILES_PER_ROW != 0);
         return row;
     }
+
     public static boolean isValidTileCoor(final int coordinates) {
         return coordinates >= 0 && coordinates < NUM_TILES;
     }
