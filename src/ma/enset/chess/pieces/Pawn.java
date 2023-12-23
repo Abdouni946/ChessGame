@@ -19,6 +19,11 @@ public class Pawn extends Piece {
     }
 
     @Override
+    public String toString() {
+        return pieceType.Pawn.toString();
+    }
+
+    @Override
     public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int candidateOffset : LEGAL_MOVES_OFFSETS) {

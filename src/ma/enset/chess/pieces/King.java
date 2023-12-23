@@ -42,6 +42,10 @@ public class King extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public String toString() {
+        return pieceType.King.toString();
+    }
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
         return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == -1) || (offset == 7));
     }

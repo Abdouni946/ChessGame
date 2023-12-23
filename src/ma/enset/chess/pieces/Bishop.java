@@ -46,6 +46,10 @@ public class Bishop extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public String toString() {
+        return pieceType.Bishop.toString();
+    }
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
         return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == 7));
     }

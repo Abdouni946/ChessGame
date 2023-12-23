@@ -4,10 +4,8 @@ import com.google.common.collect.ImmutableList;
 import ma.enset.chess.Alliance;
 import ma.enset.chess.pieces.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 public class Board {
     private final List<Tile> gameBoard;
     private final Collection<Piece> whitePieces;
@@ -18,8 +16,36 @@ public class Board {
         this.gameBoard = createGameBoard(builder);
         this.whitePieces= calculateActivePieces(gameBoard, Alliance.WHITE);
         this.blackPieces= calculateActivePieces(gameBoard, Alliance.BLACK);
+
+        final Collection<Move> whiteLegalMoves = calcLegalMoves(this.whitePieces);
+        final Collection<Move> blackLegalMoves = calcLegalMoves(this.blackPieces);
     }
-    private Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final Alliance alliance) {
+
+    @Override
+    public String toString(){
+        final StringBuilder BoardText = new StringBuilder();// mutable list of characters
+        for ( int i =0 ; i < BoardUtils.NUM_TILES ; i++) {
+            final String tileText = this.gameBoard.get(i).toString();
+            BoardText.append(String.format("%3s", tileText));
+            if((i+1) % BoardUtils.NUM_TILES_PER_ROW == 0) {
+                BoardText.append("\n");
+            }
+        }
+        return BoardText.toString();
+    }
+
+    private Collection<Move> calcLegalMoves(final Collection<Piece> Pieces) {
+
+        final List<Move> legalMoves = new ArrayList<>();
+        for (final Piece piece : Pieces ){
+            legalMoves.addAll(piece.calcLegalMoves(this)); // calculate legal moves for each piece
+        }
+
+        return ImmutableList.copyOf(legalMoves);
+    }
+
+
+    private static Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final Alliance alliance) {
         final List<Piece> activatePieces =  new ArrayList<>();
         for(final Tile tile : gameBoard) {
             if(tile.isOccupied()){
@@ -88,7 +114,9 @@ public class Board {
     public static class Builder {
         Map<Integer, Piece> BoardConfig ;
         Alliance nextMoveMaker;
-        public Builder () { }
+        public Builder () {
+            this.BoardConfig = new HashMap<>();
+        }
         public Builder setPiece(final Piece piece){
             this.BoardConfig.put(piece.getPosition(), piece);
             return this;

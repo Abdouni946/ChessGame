@@ -18,6 +18,11 @@ public class Rook extends Piece {
     public Rook(final int position, final Alliance alliance) { super(position, alliance); }
 
     @Override
+    public String toString() {
+        return pieceType.Rook.toString();
+    }
+
+    @Override
     public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for(final int candidateOffset : LEGAL_MOVES_VECTOR_OFFSETS) {

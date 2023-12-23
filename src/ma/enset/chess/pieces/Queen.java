@@ -18,6 +18,11 @@ public class Queen extends Piece {
     public Queen(final int position, final Alliance alliance) { super(position, alliance); }
 
     @Override
+    public String toString() {
+        return pieceType.Queen.toString();
+    }
+
+    @Override
     public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for(final int candidateOffset : LEGAL_MOVES_VECTOR_OFFSETS) {

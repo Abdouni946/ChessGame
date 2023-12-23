@@ -41,6 +41,11 @@ public class Knight extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public String toString() {
+        return pieceType.Knight.toString();
+    }
+
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
         return BoardUtils.FIRST_COL[currentPos] && ((offset == -17) || (offset == -10) || (offset == 6) || (offset == 15));
     }
