@@ -16,7 +16,7 @@ import java.util.List;
 public class King extends Piece {
     private final static int[] LEGAL_MOVES_OFFSETS = { -9, -8, -7, -1, 1, 7, 8, 9 };
 
-    public King(final int position, final Alliance alliance) { super(position, alliance); }
+    public King(final int position, final Alliance alliance) { super(position, pieceType.King, alliance); }
 
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {

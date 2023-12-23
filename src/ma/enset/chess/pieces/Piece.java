@@ -8,17 +8,22 @@ import java.util.Collection;
 
 public abstract class Piece {
     protected final int position;
+    protected final pieceType piecesType;
     protected final Alliance alliance;
     protected final boolean isFirstMove;
 
-    public Piece(final int position, final Alliance alliance) {
+    public Piece(final int position, pieceType piecesType, final Alliance alliance) {
         this.position = position;
+        this.piecesType = piecesType;
         this.alliance = alliance;
         this.isFirstMove = false;
     }
 
     public int getPosition() {
         return this.position;
+    }
+    public pieceType getPieceType() {
+        return this.piecesType;
     }
 
     public Alliance getAlliance() {
@@ -31,13 +36,43 @@ public abstract class Piece {
 
     public enum pieceType{
 
-        Pawn("P"),
-        Rook("R"),
-        Queen("Q"),
-        King("K"),
-        Bishop("B"),
-        Knight("N");
-
+        Pawn("P") {
+            @Override
+            public boolean isKing() {
+                return false;
+            }
+        },
+        Rook("R") {
+            @Override
+            public boolean isKing() {
+                return false;
+            }
+        },
+        Queen("Q") {
+            @Override
+            public boolean isKing() {
+                return false;
+            }
+        },
+        King("K") {
+            @Override
+            public boolean isKing() {
+                return true;
+            }
+        },
+        Bishop("B") {
+            @Override
+            public boolean isKing() {
+                return false;
+            }
+        },
+        Knight("N") {
+            @Override
+            public boolean isKing() {
+                return false;
+            }
+        };
+        public abstract boolean isKing();
         private String pieceName;
 
         pieceType(final String pieceName){
@@ -45,8 +80,10 @@ public abstract class Piece {
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return this.pieceName;
         }
+
+
     }
 }

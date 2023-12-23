@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Queen extends Piece {
     private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = { -9, -8, -7, -1, +1, +7, +8, +9 };
-    public Queen(final int position, final Alliance alliance) { super(position, alliance); }
+    public Queen(final int position, final Alliance alliance) { super(position,pieceType.Queen, alliance); }
 
     @Override
     public String toString() {

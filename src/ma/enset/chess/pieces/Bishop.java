@@ -16,7 +16,7 @@ import java.util.List;
 public class Bishop extends Piece {
     private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = { -9, -7, +7, +9 };
 
-    public Bishop(final int position, final Alliance alliance) { super(position, alliance); }
+    public Bishop(final int position, final Alliance alliance) { super(position,pieceType.Bishop, alliance); }
 
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {
