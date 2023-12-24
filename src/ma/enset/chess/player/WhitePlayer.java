@@ -9,9 +9,9 @@ import java.util.Collection;
 
 public class WhitePlayer extends player {
 
-    public WhitePlayer(Board board,
-                       Collection<Move> whiteLegalMoves,
-                       Collection<Move> blackLegalMoves) {
+    public WhitePlayer(final Board board,
+                       final Collection<Move> whiteLegalMoves,
+                       final Collection<Move> blackLegalMoves) {
         super(board, whiteLegalMoves, blackLegalMoves);
     }
 

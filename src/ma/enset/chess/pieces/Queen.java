@@ -14,8 +14,11 @@ import java.util.Collection;
 import java.util.List;
 
 public class Queen extends Piece {
-    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = { -9, -8, -7, -1, +1, +7, +8, +9 };
-    public Queen(final int position, final Alliance alliance) { super(position,pieceType.Queen, alliance); }
+    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = {-9, -8, -7, -1, +1, +7, +8, +9};
+
+    public Queen(final int position, final Alliance alliance) {
+        super(position, pieceType.Queen, alliance);
+    }
 
     @Override
     public String toString() {
@@ -23,9 +26,14 @@ public class Queen extends Piece {
     }
 
     @Override
+    public Piece movePiece(final Move move) {
+        return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getAlliance());
+    }
+
+    @Override
     public Collection<Move> calcLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
-        for(final int candidateOffset : LEGAL_MOVES_VECTOR_OFFSETS) {
+        for (final int candidateOffset : LEGAL_MOVES_VECTOR_OFFSETS) {
             int destinationCoordinate = this.position;
             while (BoardUtils.isValidTileCoor(destinationCoordinate)) {
                 if (isFirstColExclusion(destinationCoordinate, candidateOffset) || isEighthColExclusion(destinationCoordinate, candidateOffset)) {
@@ -34,7 +42,7 @@ public class Queen extends Piece {
                 destinationCoordinate += candidateOffset;
                 if (BoardUtils.isValidTileCoor(destinationCoordinate)) {
                     final Tile destinationTile = board.getTile(destinationCoordinate);
-                    if(!destinationTile.isOccupied()) {
+                    if (!destinationTile.isOccupied()) {
                         legalMoves.add(new MajorMove(board, this, destinationCoordinate));
                     } else {
                         final Piece occupingPiece = destinationTile.getPiece();
@@ -53,6 +61,7 @@ public class Queen extends Piece {
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
         return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == -1) || (offset == 7));
     }
+
     private static boolean isEighthColExclusion(final int currentPos, final int offset) {
         return BoardUtils.EIGHTH_COL[currentPos] && ((offset == -7) || (offset == 1) || (offset == 9));
     }

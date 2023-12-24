@@ -16,12 +16,17 @@ public class Pawn extends Piece {
     private final static int[] LEGAL_MOVES_OFFSETS = {7, 8, 9, 16};
 
     public Pawn(final int position, final Alliance alliance) {
-        super(position,pieceType.Pawn, alliance);
+        super(position, pieceType.Pawn, alliance);
     }
 
     @Override
     public String toString() {
         return pieceType.Pawn.toString();
+    }
+
+    @Override
+    public Piece movePiece(final Move move) {
+        return new Pawn(move.getDestinationCoordinate(), move.getMovedPiece().getAlliance());
     }
 
     @Override

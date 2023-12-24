@@ -7,12 +7,12 @@ import ma.enset.chess.pieces.Piece;
 
 import java.util.Collection;
 
-public class BlackPlayer  extends player{
-    public BlackPlayer(Board board,
-                       Collection<Move> whiteLegalMoves,
-                       Collection<Move> blackLegalMoves) {
+public class BlackPlayer extends player {
+    public BlackPlayer(final Board board,
+                       final Collection<Move> whiteLegalMoves,
+                       final Collection<Move> blackLegalMoves) {
 
-        super(board , blackLegalMoves, whiteLegalMoves);
+        super(board, blackLegalMoves, whiteLegalMoves);
 
     }
 
@@ -29,6 +29,5 @@ public class BlackPlayer  extends player{
     public player getOpponent() {
         return this.board.whitePlayer();
     }
-
 
 }

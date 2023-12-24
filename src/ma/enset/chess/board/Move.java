@@ -1,10 +1,11 @@
 package ma.enset.chess.board;
 
+import ma.enset.chess.board.Board.Builder;
 import ma.enset.chess.pieces.Piece;
 
 public abstract class Move {
-    private final Board board;
-    private final Piece movedPiece;
+    protected final Board board;
+    protected final Piece movedPiece;
     private final int destinationCoordinate;
 
     public abstract Board execute();
@@ -19,6 +20,10 @@ public abstract class Move {
         return this.destinationCoordinate;
     }
 
+    public Piece getMovedPiece() {
+        return this.movedPiece;
+    }
+
     public static final class MajorMove extends Move {
         public MajorMove(final Board board, final Piece movedPiece, final int destinationCoordinate) {
             super(board, movedPiece, destinationCoordinate);
@@ -26,7 +31,20 @@ public abstract class Move {
 
         @Override
         public Board execute() {
-            return null;
+
+            final Builder builder = new Builder();
+            for (final Piece piece : this.board.getCurrentPlayer().getActivePieces()) {
+                if (!this.movedPiece.equals(piece)) {
+                    builder.setPiece(piece);
+                }
+            }
+            for (final Piece piece : this.board.getCurrentPlayer().getOpponent().getActivePieces()) {
+                builder.setPiece(piece);
+            }
+            //move the moved piece
+            builder.setPiece(this.movedPiece.movePiece(this));
+            builder.setMoveMaker(this.board.getCurrentPlayer().getOpponent().getAlliance());
+            return builder.build();
         }
     }
 

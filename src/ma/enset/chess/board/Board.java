@@ -28,7 +28,6 @@ public class Board {
     //Constructor
     private Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
-        this.currentPlayer = null;
         this.whitePieces = calculateActivePieces(gameBoard, Alliance.WHITE);
         this.blackPieces = calculateActivePieces(gameBoard, Alliance.BLACK);
 
@@ -37,7 +36,7 @@ public class Board {
 
         this.whitePlayer = new WhitePlayer(this, whiteLegalMoves, blackLegalMoves);// for legal castle moves
         this.blackPlayer = new BlackPlayer(this, whiteLegalMoves, blackLegalMoves);
-
+        this.currentPlayer = builder.nextMoveMaker.choosePlayer(this.whitePlayer, this.blackPlayer);
     }
 
     public player blackPlayer() {

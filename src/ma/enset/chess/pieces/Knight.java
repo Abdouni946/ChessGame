@@ -17,7 +17,7 @@ public class Knight extends Piece {
     private final static int[] LEGAL_MOVES_OFFSETS = {-17, -15, -10, -6, 6, 10, 15, 17};
 
     public Knight(final int position, final Alliance alliance) {
-        super(position,pieceType.Knight, alliance);
+        super(position, pieceType.Knight, alliance);
     }
 
     @Override
@@ -42,6 +42,11 @@ public class Knight extends Piece {
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+
+    @Override
+    public Piece movePiece(final Move move) {
+        return new Knight(move.getDestinationCoordinate(), move.getMovedPiece().getAlliance());
     }
 
     @Override
