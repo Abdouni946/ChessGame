@@ -140,6 +140,18 @@ public class Board {
         return builder.build();
     }
 
+ /*   public Iterable<Move> getAllLegalMoves() {
+      return Iterables.unmodifiableIterable(Iterables.concat(this.whitePlayer.getLegalMoves(), this.blackPlayer.getLegalMoves()));
+    }
+  */
+
+    public Collection<Move> getAllLegalMoves() {
+        Collection<Move> allLegalMoves = new ArrayList<>();
+        allLegalMoves.addAll(this.whitePlayer.getLegalMoves());
+        allLegalMoves.addAll(this.blackPlayer.getLegalMoves());
+        return ImmutableList.copyOf(allLegalMoves);
+    }
+
     //The Builder Pattern allows you to vary the chess game's setup
     public static class Builder {
         Map<Integer, Piece> BoardConfig;
