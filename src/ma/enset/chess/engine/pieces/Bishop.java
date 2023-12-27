@@ -1,33 +1,23 @@
-package ma.enset.chess.pieces;
+package ma.enset.chess.engine.pieces;
 
 import com.google.common.collect.ImmutableList;
-import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.BoardUtils;
-import ma.enset.chess.board.Move;
-import ma.enset.chess.board.Move.AttackMove;
-import ma.enset.chess.board.Move.MajorMove;
-import ma.enset.chess.board.Tile;
+import ma.enset.chess.engine.Alliance;
+import ma.enset.chess.engine.board.Board;
+import ma.enset.chess.engine.board.BoardUtils;
+import ma.enset.chess.engine.board.Move;
+import ma.enset.chess.engine.board.Move.AttackMove;
+import ma.enset.chess.engine.board.Move.MajorMove;
+import ma.enset.chess.engine.board.Tile;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Queen extends Piece {
-    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = {-9, -8, -7, -1, +1, +7, +8, +9};
+public class Bishop extends Piece {
+    private final static int[] LEGAL_MOVES_VECTOR_OFFSETS = {-9, -7, +7, +9};
 
-    public Queen(final int position, final Alliance alliance) {
-        super(position, pieceType.Queen, alliance);
-    }
-
-    @Override
-    public String toString() {
-        return pieceType.Queen.toString();
-    }
-
-    @Override
-    public Piece movePiece(final Move move) {
-        return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getAlliance());
+    public Bishop(final int position, final Alliance alliance) {
+        super(position, pieceType.Bishop, alliance);
     }
 
     @Override
@@ -58,11 +48,21 @@ public class Queen extends Piece {
         return ImmutableList.copyOf(legalMoves);
     }
 
+    @Override
+    public Piece movePiece(final Move move) {
+        return new Bishop(move.getDestinationCoordinate(), move.getMovedPiece().getAlliance());
+    }
+
+    @Override
+    public String toString() {
+        return pieceType.Bishop.toString();
+    }
+
     private static boolean isFirstColExclusion(final int currentPos, final int offset) {
-        return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == -1) || (offset == 7));
+        return BoardUtils.FIRST_COL[currentPos] && ((offset == -9) || (offset == 7));
     }
 
     private static boolean isEighthColExclusion(final int currentPos, final int offset) {
-        return BoardUtils.EIGHTH_COL[currentPos] && ((offset == -7) || (offset == 1) || (offset == 9));
+        return BoardUtils.EIGHTH_COL[currentPos] && ((offset == -7) || (offset == 9));
     }
 }

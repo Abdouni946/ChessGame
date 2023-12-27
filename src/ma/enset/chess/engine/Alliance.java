@@ -1,8 +1,8 @@
-package ma.enset.chess;
+package ma.enset.chess.engine;
 
-import ma.enset.chess.player.BlackPlayer;
-import ma.enset.chess.player.WhitePlayer;
-import ma.enset.chess.player.player;
+import ma.enset.chess.engine.player.BlackPlayer;
+import ma.enset.chess.engine.player.WhitePlayer;
+import ma.enset.chess.engine.player.player;
 
 public enum Alliance {
     WHITE {

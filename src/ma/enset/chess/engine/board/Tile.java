@@ -1,7 +1,7 @@
-package ma.enset.chess.board;
+package ma.enset.chess.engine.board;
 
 import com.google.common.collect.ImmutableMap;
-import ma.enset.chess.pieces.Piece;
+import ma.enset.chess.engine.pieces.Piece;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package ma.enset.chess.player;
+package ma.enset.chess.engine.player;
 
 public enum MoveStatus {
     DONE {
