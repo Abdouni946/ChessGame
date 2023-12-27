@@ -1,14 +1,19 @@
 package ma.enset.chess.gui;
 
+import ma.enset.chess.engine.board.BoardUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Table {
     private final JFrame gameFrame;
 
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(800, 800);
+    private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(600, 600);
 
     public Table() {
         this.gameFrame = new JFrame("Chess");
@@ -38,7 +43,19 @@ public class Table {
     }
 
     private class BoardPanel extends JPanel {
+        final List<TilePanel> tilesPanels;
 
+        BoardPanel() {
+            super(new GridLayout(8, 8));
+            this.tilesPanels = new ArrayList<>();
+            for (int i = 0; i < BoardUtils.NUM_TILES; ++i) {
+                final TilePanel tilePanel = new TilePanel();
+                this.tilesPanels.add(tilePanel);
+                add(tilePanel);
+            }
+            setPreferredSize(BOARD_PANEL_DIMENSION);
+            validate();
+        }
     }
 
     private class TilePanel extends JPanel {
