@@ -1,6 +1,7 @@
 package ma.enset.chess.engine.player;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import ma.enset.chess.engine.Alliance;
 import ma.enset.chess.engine.board.Board;
 import ma.enset.chess.engine.board.Move;
@@ -15,14 +16,22 @@ public abstract class player {
     protected final Board board;
     protected King playerKing; // most important piece
     protected final Collection<Move> legalMoves;
+    private final boolean isInCheck;
+
+    public player(Board board, Collection<Move> legalMoves, Collection<Move> opponentMove) {
+        this.board = board;
+        this.playerKing = establishKing();
+        this.legalMoves = ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMove)));
+        this.isInCheck = !player.calculateAttackMove(this.playerKing.getPosition(), opponentMove).isEmpty();
+    }
 
     public abstract Collection<Piece> getActivePieces();
+
+    protected abstract Collection<Move> calculateKingCastles(Collection<Move> playerLegals, Collection<Move> opponentsLegals);
 
     public abstract Alliance getAlliance();
 
     public abstract player getOpponent();
-
-    private final boolean isInCheck;
 
     //Methodes
     private Piece getPlayerKing() {
@@ -74,14 +83,7 @@ public abstract class player {
         return new MoveTransition(this.board, move, MoveStatus.DONE);
     }
 
-    public player(Board board, Collection<Move> legalMoves, Collection<Move> opponentMove) {
-        this.board = board;
-        this.isInCheck = !player.calculateAttackMove(this.playerKing.getPosition(), opponentMove).isEmpty();
-        this.playerKing = establishKing();
-        this.legalMoves = legalMoves;
-    }
-
-    private static Collection<Move> calculateAttackMove(int position, Collection<Move> moves) {
+    protected static Collection<Move> calculateAttackMove(int position, Collection<Move> moves) {
         final List<Move> attackMoves = new ArrayList<>();
         for (final Move move : moves) {
             if (position == move.getDestinationCoordinate()) {
