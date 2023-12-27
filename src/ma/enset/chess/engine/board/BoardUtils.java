@@ -10,7 +10,10 @@ public class BoardUtils {
     public static final boolean[] SEVENTH_COL = initCol(6);
     public static final boolean[] EIGHTH_COL = initCol(7);
 
+    public static final boolean[] FIRST_ROW = initRow(0);
     public static final boolean[] SECOND_ROW = initRow(1);
+    public static final boolean[] THIRD_ROW = initRow(2);
+    public static final boolean[] FIFTH_ROW = initRow(4);
     public static final boolean[] SEVENTH_ROW = initRow(6);
 
     private BoardUtils() {
