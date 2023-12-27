@@ -12,15 +12,16 @@ public class Table {
 
     public Table() {
         this.gameFrame = new JFrame("Chess");
-        final JMenuBar tableMenuBar = new JMenuBar();
-        populateMenuBar(tableMenuBar);
+        final JMenuBar tableMenuBar = createMenuBar();
         this.gameFrame.setJMenuBar(tableMenuBar);
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.gameFrame.setVisible(true);
     }
 
-    private void populateMenuBar(final JMenuBar tableMenuBar) {
+    private JMenuBar createMenuBar() {
+        final JMenuBar tableMenuBar = new JMenuBar();
         tableMenuBar.add(createFileMenu());
+        return tableMenuBar;
     }
 
     private JMenu createFileMenu() {
