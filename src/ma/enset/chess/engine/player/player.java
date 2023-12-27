@@ -1,11 +1,11 @@
-package ma.enset.chess.player;
+package ma.enset.chess.engine.player;
 
 import com.google.common.collect.ImmutableList;
-import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.Move;
-import ma.enset.chess.pieces.King;
-import ma.enset.chess.pieces.Piece;
+import ma.enset.chess.engine.Alliance;
+import ma.enset.chess.engine.board.Board;
+import ma.enset.chess.engine.board.Move;
+import ma.enset.chess.engine.pieces.King;
+import ma.enset.chess.engine.pieces.Piece;
 
 import java.util.ArrayList;
 import java.util.Collection;

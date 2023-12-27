@@ -1,8 +1,8 @@
-package ma.enset.chess.pieces;
+package ma.enset.chess.engine.pieces;
 
-import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.Move;
+import ma.enset.chess.engine.Alliance;
+import ma.enset.chess.engine.board.Board;
+import ma.enset.chess.engine.board.Move;
 
 import java.util.Collection;
 

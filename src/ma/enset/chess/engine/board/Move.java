@@ -1,7 +1,7 @@
-package ma.enset.chess.board;
+package ma.enset.chess.engine.board;
 
-import ma.enset.chess.board.Board.Builder;
-import ma.enset.chess.pieces.Piece;
+import ma.enset.chess.engine.board.Board.Builder;
+import ma.enset.chess.engine.pieces.Piece;
 
 public abstract class Move {
     protected final Board board;

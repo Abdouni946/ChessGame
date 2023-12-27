@@ -1,12 +1,12 @@
-package ma.enset.chess.pieces;
+package ma.enset.chess.engine.pieces;
 
 import com.google.common.collect.ImmutableList;
-import ma.enset.chess.Alliance;
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.BoardUtils;
-import ma.enset.chess.board.Move;
-import ma.enset.chess.board.Move.AttackMove;
-import ma.enset.chess.board.Move.MajorMove;
+import ma.enset.chess.engine.Alliance;
+import ma.enset.chess.engine.board.Board;
+import ma.enset.chess.engine.board.BoardUtils;
+import ma.enset.chess.engine.board.Move;
+import ma.enset.chess.engine.board.Move.AttackMove;
+import ma.enset.chess.engine.board.Move.MajorMove;
 
 import java.util.ArrayList;
 import java.util.Collection;

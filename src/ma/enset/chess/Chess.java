@@ -1,6 +1,6 @@
 package ma.enset.chess;
 
-import ma.enset.chess.board.Board;
+import ma.enset.chess.engine.board.Board;
 
 public class Chess {
     public static void main(String[] args) {

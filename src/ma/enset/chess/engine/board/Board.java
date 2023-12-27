@@ -1,11 +1,11 @@
-package ma.enset.chess.board;
+package ma.enset.chess.engine.board;
 
 import com.google.common.collect.ImmutableList;
-import ma.enset.chess.Alliance;
-import ma.enset.chess.pieces.*;
-import ma.enset.chess.player.BlackPlayer;
-import ma.enset.chess.player.WhitePlayer;
-import ma.enset.chess.player.player;
+import ma.enset.chess.engine.Alliance;
+import ma.enset.chess.engine.pieces.*;
+import ma.enset.chess.engine.player.BlackPlayer;
+import ma.enset.chess.engine.player.WhitePlayer;
+import ma.enset.chess.engine.player.player;
 
 import java.util.*;
 

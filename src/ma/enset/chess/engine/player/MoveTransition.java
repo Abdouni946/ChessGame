@@ -1,7 +1,7 @@
-package ma.enset.chess.player;
+package ma.enset.chess.engine.player;
 
-import ma.enset.chess.board.Board;
-import ma.enset.chess.board.Move;
+import ma.enset.chess.engine.board.Board;
+import ma.enset.chess.engine.board.Move;
 
 public class MoveTransition {
     private final Board transitionBoard;

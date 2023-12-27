@@ -1,4 +1,4 @@
-package ma.enset.chess.board;
+package ma.enset.chess.engine.board;
 
 public class BoardUtils {
     public static final int NUM_TILES = 64;
