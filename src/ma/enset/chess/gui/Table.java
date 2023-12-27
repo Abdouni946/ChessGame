@@ -14,6 +14,7 @@ public class Table {
 
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(800, 800);
     private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(600, 600);
+    private static final Dimension TILE_PANEL_DIMENSION = new Dimension(75, 75);
 
     public Table() {
         this.gameFrame = new JFrame("Chess");
@@ -59,6 +60,14 @@ public class Table {
     }
 
     private class TilePanel extends JPanel {
+        private final int tileId;
 
+        TilePanel(final BoardPanel boardPanel, final int tileId) {
+            super(new GridBagLayout());
+            this.tileId = tileId;
+            setPreferredSize(TILE_PANEL_DIMENSION);
+            assignTileColor();
+            validate();
+        }
     }
 }
