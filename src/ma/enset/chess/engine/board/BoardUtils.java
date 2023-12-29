@@ -6,18 +6,17 @@ public class BoardUtils {
 
     public static final boolean[] FIRST_COL = initCol(0);
     public static final boolean[] SECOND_COL = initCol(1);
-
     public static final boolean[] SEVENTH_COL = initCol(6);
     public static final boolean[] EIGHTH_COL = initCol(7);
 
-    public static final boolean[] FIRST_ROW = initRow(0);
-    public static final boolean[] SECOND_ROW = initRow(8);
-    public static final boolean[] THIRD_ROW = initRow(16);
-    public static final boolean[] FOURTH_ROW = initRow(24);
-    public static final boolean[] FIFTH_ROW = initRow(32);
-    public static final boolean[] SIXTH_ROW = initRow(40);
-    public static final boolean[] SEVENTH_ROW = initRow(48);
-    public static final boolean[] EIGHTH_ROW = initRow(56);
+    public static final boolean[] EIGHTH_RANK = initRow(0);
+    public static final boolean[] SEVENTH_RANK = initRow(8);
+    public static final boolean[] SIXTH_RANK = initRow(16);
+    public static final boolean[] FIFTH_RANK = initRow(24);
+    public static final boolean[] FOURTH_RANK = initRow(32);
+    public static final boolean[] THIRD_RANK = initRow(40);
+    public static final boolean[] SECOND_RANK = initRow(48);
+    public static final boolean[] FIRST_RANK = initRow(56);
 
     private BoardUtils() {
         throw new RuntimeException("BoardUtils can't be instantiated");
