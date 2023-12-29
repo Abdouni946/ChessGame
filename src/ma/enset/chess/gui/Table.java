@@ -18,6 +18,7 @@ public class Table {
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
     private final Board chessBoard;
+    private static String defaultPieceIconsPath = "assets/pieces/plain/";
 
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(800, 800);
     private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(600, 600);
@@ -91,6 +92,7 @@ public class Table {
             this.tileId = tileId;
             setPreferredSize(TILE_PANEL_DIMENSION);
             assignTileColor();
+            assignTilePieceIcon(chessBoard);
             validate();
         }
 
@@ -98,7 +100,7 @@ public class Table {
             this.removeAll();
             if (board.getTile(tileId).isOccupied()) {
                 try {
-                    final BufferedImage image = ImageIO.read(new File(pieceIconPath + board.getTile(tileId).getPiece().getAlliance().toString().substring(0, 1) + board.getTile(tileId).getPiece().toString() + ".gif"));
+                    final BufferedImage image = ImageIO.read(new File(defaultPieceIconsPath + board.getTile(tileId).getPiece().getAlliance().toString().substring(0, 1) + board.getTile(tileId).getPiece().toString() + ".gif"));
                     add(new JLabel(new ImageIcon(image)));
                 } catch (IOException e) {
                     e.printStackTrace();
