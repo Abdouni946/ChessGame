@@ -17,8 +17,8 @@ public class Table {
     private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(600, 600);
     private static final Dimension TILE_PANEL_DIMENSION = new Dimension(75, 75);
 
-    private Color lightTileColor = Color.decode("#FFFACD");
-    private Color darkTileColor = Color.decode("#593E1A");
+    private Color lightTileColor = Color.decode("#EEEED2");
+    private Color darkTileColor = Color.decode("#769656");
 
     public Table() {
         this.gameFrame = new JFrame("Chess");
@@ -56,7 +56,7 @@ public class Table {
             }
         });
         fileMenu.add(exitMenuItem);
-        
+
         return fileMenu;
     }
 
@@ -66,8 +66,8 @@ public class Table {
         BoardPanel() {
             super(new GridLayout(8, 8));
             this.tilesPanels = new ArrayList<>();
-            for (int i = 0; i < BoardUtils.NUM_TILES; ++i) {
-                final TilePanel tilePanel = new TilePanel(this, i);
+            for (int tileId = 0; tileId < BoardUtils.NUM_TILES; ++tileId) {
+                final TilePanel tilePanel = new TilePanel(this, tileId);
                 this.tilesPanels.add(tilePanel);
                 add(tilePanel);
             }
