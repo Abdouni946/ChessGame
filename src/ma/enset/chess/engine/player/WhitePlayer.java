@@ -41,12 +41,11 @@ public class WhitePlayer extends Player {
             // whites king side castle
             if (!this.board.getTile(61).isOccupied() && !this.board.getTile(62).isOccupied()) {
                 final Tile rookTile = this.board.getTile(63);
-                if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove()) {
-                    if (Player.calculateAttackMove(61, opponentsLegals).isEmpty() &&
-                            Player.calculateAttackMove(62, opponentsLegals).isEmpty() &&
-                            rookTile.getPiece().getPieceType().isRook()) {
-                        kingCastles.add(new Move.KingSideCastleMove(this.board, this.playerKing, 62, (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
-                    }
+                if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove() &&
+                        Player.calculateAttackMove(61, opponentsLegals).isEmpty() &&
+                        Player.calculateAttackMove(62, opponentsLegals).isEmpty() &&
+                        rookTile.getPiece().getPieceType().isRook()) {
+                    kingCastles.add(new Move.KingSideCastleMove(this.board, this.playerKing, 62, (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
                 }
             }
             // whites queen side castle
@@ -54,7 +53,10 @@ public class WhitePlayer extends Player {
                     !this.board.getTile(58).isOccupied() &&
                     !this.board.getTile(57).isOccupied()) {
                 final Tile rookTile = this.board.getTile(56);
-                if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove()) {
+                if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove() &&
+                        Player.calculateAttackMove(58, opponentsLegals).isEmpty() &&
+                        Player.calculateAttackMove(59, opponentsLegals).isEmpty() &&
+                        rookTile.getPiece().getPieceType().isRook()) {
                     kingCastles.add(new Move.QueenSideCastleMove(this.board, this.playerKing,
                             58, (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 59));
                 }
