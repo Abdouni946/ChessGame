@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableList;
 import ma.enset.chess.engine.Alliance;
 import ma.enset.chess.engine.pieces.*;
 import ma.enset.chess.engine.player.BlackPlayer;
+import ma.enset.chess.engine.player.Player;
 import ma.enset.chess.engine.player.WhitePlayer;
-import ma.enset.chess.engine.player.player;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Board {
     private final Collection<Piece> blackPieces;
     private final WhitePlayer whitePlayer;
     private final BlackPlayer blackPlayer;
-    private final player currentPlayer;
+    private final Player currentPlayer;
 
     public Collection<Piece> getWhitePieces() {
         return whitePieces;
@@ -39,15 +39,15 @@ public class Board {
         this.currentPlayer = builder.nextMoveMaker.choosePlayer(this.whitePlayer, this.blackPlayer);
     }
 
-    public player blackPlayer() {
+    public Player blackPlayer() {
         return this.blackPlayer;
     }
 
-    public player whitePlayer() {
+    public Player whitePlayer() {
         return this.whitePlayer;
     }
 
-    public player getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
 

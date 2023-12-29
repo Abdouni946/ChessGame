@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class WhitePlayer extends player {
+public class WhitePlayer extends Player {
 
     public WhitePlayer(final Board board,
                        final Collection<Move> whiteLegalMoves,
@@ -30,7 +30,7 @@ public class WhitePlayer extends player {
     }
 
     @Override
-    public player getOpponent() {
+    public Player getOpponent() {
         return this.board.blackPlayer();
     }
 
@@ -42,8 +42,8 @@ public class WhitePlayer extends player {
             if (!this.board.getTile(61).isOccupied() && !this.board.getTile(62).isOccupied()) {
                 final Tile rookTile = this.board.getTile(63);
                 if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove()) {
-                    if (player.calculateAttackMove(61, opponentsLegals).isEmpty() &&
-                            player.calculateAttackMove(62, opponentsLegals).isEmpty() &&
+                    if (Player.calculateAttackMove(61, opponentsLegals).isEmpty() &&
+                            Player.calculateAttackMove(62, opponentsLegals).isEmpty() &&
                             rookTile.getPiece().getPieceType().isRook()) {
                         kingCastles.add(new Move.KingSideCastleMove(this.board, this.playerKing, 62, (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
                     }
