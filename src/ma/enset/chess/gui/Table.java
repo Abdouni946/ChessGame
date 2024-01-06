@@ -5,6 +5,7 @@ import ma.enset.chess.engine.board.BoardUtils;
 import ma.enset.chess.engine.board.Move;
 import ma.enset.chess.engine.board.Tile;
 import ma.enset.chess.engine.pieces.Piece;
+import ma.enset.chess.engine.player.MoveTransition;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,7 +26,7 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class Table {
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
-    private final Board chessBoard;
+    private Board chessBoard;
     private static String defaultPieceIconsPath = "assets/pieces/plain/";
 
     private Tile sourceTile;
@@ -94,6 +95,16 @@ public class Table {
             setPreferredSize(BOARD_PANEL_DIMENSION);
             validate();
         }
+
+        public void drawBoard(final Board board) {
+            removeAll();
+            for (final TilePanel tilePanel : tilesPanels) {
+                tilePanel.drawTile(board);
+                add(tilePanel);
+            }
+            validate();
+            repaint();
+        }
     }
 
     private class TilePanel extends JPanel {
@@ -121,8 +132,21 @@ public class Table {
                             }
                         } else {
                             destinationTile = chessBoard.getTile(tileId);
-                            final Move move = null;
+                            final Move move = Move.MoveFactory.createMove(chessBoard, sourceTile.getTileCoordinate(), destinationTile.getTileCoordinate());
+                            final MoveTransition moveTransition = chessBoard.getCurrentPlayer().makeMove(move);
+                            if (moveTransition.getMoveStatus().isDone()) {
+                                chessBoard = moveTransition.getTransitionBoard();
+                            }
+                            sourceTile = null;
+                            destinationTile = null;
+                            humanMovedPiece = null;
                         }
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                boardPanel.drawBoard(chessBoard);
+                            }
+                        });
                     }
                 }
 
@@ -173,6 +197,13 @@ public class Table {
                     BoardUtils.FIRST_RANK[this.tileId]) {
                 setBackground(this.tileId % 2 != 0 ? lightTileColor : darkTileColor);
             }
+        }
+
+        public void drawTile(final Board board) {
+            assignTileColor();
+            assignTilePieceIcon(board);
+            validate();
+            repaint();
         }
     }
 }
