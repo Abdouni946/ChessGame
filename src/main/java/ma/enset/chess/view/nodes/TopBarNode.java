@@ -19,9 +19,9 @@ public class TopBarNode extends Pane {
     private HBox root;
     private Button homeButton;
     private static final int TOP_BAR_HEIGHT = 40;
-    private static final String TOP_BAR_STYLE = "-fx-background-color: rgb(73, 204, 132);",
-            HIGHLIGHTED_TOP_BAR_BUTTON_STYLE = "-fx-background-color: rgb(43, 174, 102);",
-            HOME_ICON_FILE_PATH = "file:./src/main/java/com/chess/view/resources/home_icon.png";
+    private static final String TOP_BAR_STYLE = "-fx-background-color: rgb(128,156,84)\n;",
+            HIGHLIGHTED_TOP_BAR_BUTTON_STYLE = "-fx-background-color: rgb(240,236,204);",
+            HOME_ICON_FILE_PATH = "file:./src/main/java/ma/enset/view/resources/home_icon.png";
     private static final Insets TOP_BAR_PADDING = new Insets(5, 5, 5, 5);
 
     public TopBarNode() {

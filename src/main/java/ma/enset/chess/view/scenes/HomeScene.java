@@ -37,7 +37,7 @@ public class HomeScene extends Scene {
         boardContainer = new HBox();
         topBar = new TopBarNode();
         board = new BoardNode(new LocalBoardPresenter());
-        board.buildMessageNode("Welcome to Chess!");
+        board.buildMessageNode("Welcome!");
         board.displayMessageNode();
         boardContainer.getChildren().add(board);
         root.getChildren().addAll(topBar, boardContainer);
@@ -71,7 +71,7 @@ public class HomeScene extends Scene {
 
     public void buildSelectPlayerSideBar() {
         selectPlayerSideBar = new VBox();
-        titleLabel = new TitleLabel("How would you like to play?");
+        titleLabel = new TitleLabel("Get ready to play");
         titleLabel.minWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.maxWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.minHeightProperty().bind(selectPlayerSideBar.heightProperty().multiply(0.3));
@@ -87,7 +87,8 @@ public class HomeScene extends Scene {
         localButton.maxWidthProperty().bind(titleLabel.widthProperty());
         localButton.setMinHeight(60);
         localButton.setMaxHeight(60);
-        localButton.setStyle("-fx-background-color: rgb(73, 204, 132);");
+        localButton.setStyle("-fx-background-color: rgb(40,36,36); -fx-text-fill: white;");
+
 
         localButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -97,8 +98,8 @@ public class HomeScene extends Scene {
                 isLocalGame = true;
             }
         });
-        localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(43, 174, 102);"));
-        localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(73, 204, 132);"));
+        localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(64,60,52); -fx-text-fill: white;"));
+        localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(40,36,36); -fx-text-fill: white;"));
         selectPlayerSideBar.getChildren().add(localButton);
 
         Button computerButton = new Button("vs. Computer");
@@ -107,7 +108,7 @@ public class HomeScene extends Scene {
         computerButton.maxWidthProperty().bind(titleLabel.widthProperty());
         computerButton.setMinHeight(60);
         computerButton.setMaxHeight(60);
-        computerButton.setStyle("-fx-background-color: rgb(73, 204, 132);");
+        computerButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;");
 
         computerButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -117,8 +118,8 @@ public class HomeScene extends Scene {
                 isLocalGame = false;
             }
         });
-        computerButton.setOnMouseEntered(mouseEvent -> computerButton.setStyle("-fx-background-color: rgb(43, 174, 102);"));
-        computerButton.setOnMouseExited(mouseEvent -> computerButton.setStyle("-fx-background-color: rgb(73, 204, 132);"));
+        computerButton.setOnMouseEntered(mouseEvent -> computerButton.setStyle("-fx-background-color: rgb(64,60,52);-fx-text-fill: white;"));
+        computerButton.setOnMouseExited(mouseEvent -> computerButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;    "));
         selectPlayerSideBar.getChildren().add(computerButton);
     }
 
@@ -133,6 +134,7 @@ public class HomeScene extends Scene {
         selectTimeSideBar.setPadding(new Insets(20, 10, 20, 10));
         selectTimeSideBar.setSpacing(20);
         selectTimeSideBar.setAlignment(Pos.CENTER);
+        titleLabel.setStyle("-fx-background-color: rgb(73, 204, 132);");
 
         TilePane buttonContainer = new TilePane();
         buttonContainer.setHgap(5);
@@ -150,7 +152,7 @@ public class HomeScene extends Scene {
             localButton.minHeightProperty().bind(localButton.minWidthProperty().multiply(0.5));
             localButton.maxHeightProperty().bind(localButton.maxWidthProperty().multiply(0.5));
             localButton.setFont(new Font("Impact", 25));
-            localButton.setStyle("-fx-background-color: rgb(73, 204, 132);");
+            localButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;");
 
             localButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -163,8 +165,8 @@ public class HomeScene extends Scene {
                     }
                 }
             });
-            localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(43, 174, 102);"));
-            localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(73, 204, 132);"));
+            localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(64,60,52);-fx-text-fill: white;"));
+            localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;"));
             buttonContainer.getChildren().add(localButton);
         }
 
@@ -190,7 +192,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"Bleu", "Cheddar"};
+        String[] botNames = {"BEGINNER", "ADVANCED"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
@@ -199,7 +201,7 @@ public class HomeScene extends Scene {
             localButton.minHeightProperty().bind(localButton.minWidthProperty().multiply(0.5));
             localButton.maxHeightProperty().bind(localButton.maxWidthProperty().multiply(0.5));
             localButton.setFont(new Font("Impact", 25));
-            localButton.setStyle("-fx-background-color: rgb(73, 204, 132);");
+            localButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;");
 
             localButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -209,8 +211,8 @@ public class HomeScene extends Scene {
                     bot = botName;
                 }
             });
-            localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(43, 174, 102);"));
-            localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(73, 204, 132);"));
+            localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(64,60,52);-fx-text-fill: white;"));
+            localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;"));
             buttonContainer.getChildren().add(localButton);
         }
 

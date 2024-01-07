@@ -29,7 +29,7 @@ public class TitleLabel extends Pane {
 
         background.widthProperty().bind(root.widthProperty());
         background.heightProperty().bind(root.heightProperty());
-        background.setFill(new Color(0.8275, 0.3176, 0.6, 0.5));
+        background.setFill(new Color(0.9, 0.9, 0.9, 0.8));
 
         title.setFont(new Font("Impact", 30));
         title.setAlignment(Pos.CENTER);

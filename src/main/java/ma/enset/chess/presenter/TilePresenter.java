@@ -48,14 +48,14 @@ public class TilePresenter implements Observable {
             return "-fx-background-color: rgb(155, 49, 148);";
         if (row % 2 == col % 2) {
             if (available)
-                return "-fx-background-color: rgb(205, 99, 198);";
+                return "-fx-background-color: rgb(220,220,220);";
             else
-                return "-fx-background-color: rgb(73, 204, 132);";
+                return "-fx-background-color: rgb(128,156,84)";
         } else {
             if (available)
-                return "-fx-background-color: rgb(255, 149, 248);";
+                return "-fx-background-color: rgb(192,192,192);";
             else
-                return "-fx-background-color: rgb(255, 249, 248);";
+                return "-fx-background-color: RGB(236, 236, 204);";
         }
     }
 
