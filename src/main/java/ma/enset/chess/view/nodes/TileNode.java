@@ -100,7 +100,7 @@ public class TileNode extends StackPane implements Observer {
     }
 
     public Image getImage(Pieces piece) {
-        String path = "file:./src/main/java/com/chess/view/resources/";
+        String path = "file:./src/main/java/ma/enset/chess/view/resources/";
         if (piece == Pieces.BLACK_KING)
             path += "black_king.png";
         else if (piece == Pieces.BLACK_QUEEN)
