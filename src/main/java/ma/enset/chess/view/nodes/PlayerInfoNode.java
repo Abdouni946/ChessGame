@@ -18,6 +18,7 @@ public class PlayerInfoNode extends Pane {
         this.playerName.setPadding(new Insets(0, 10, 0, 10));
         this.playerName.setFont(new Font("Impact", 20));
         root = new HBox();
+        root.setStyle("-fx-background-color: #ffff;");
         root.setAlignment(Pos.CENTER);
         root.minWidthProperty().bind(widthProperty());
         root.maxWidthProperty().bind(widthProperty());

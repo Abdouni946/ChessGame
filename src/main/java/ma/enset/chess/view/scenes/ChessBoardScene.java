@@ -22,6 +22,7 @@ public class ChessBoardScene extends Scene {
 
     private void initializeComponents() {
         root = (VBox) getRoot();
+        root.setStyle("-fx-background-color: #382c2c;");
         topBar = new TopBarNode();
         topBar.minWidthProperty().bind(widthProperty());
         topBar.maxWidthProperty().bind(widthProperty());

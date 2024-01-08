@@ -34,6 +34,7 @@ public class HomeScene extends Scene {
     public HomeScene(double width, double height) {
         super(new VBox(), width, height);
         root = (VBox) getRoot();
+        root.setStyle("-fx-background-color: #382c2c;"); // Dark background color
         boardContainer = new HBox();
         topBar = new TopBarNode();
         board = new BoardNode(new LocalBoardPresenter());
@@ -192,7 +193,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"BEGINNER", "ADVANCED"};
+        String[] botNames = {"Bleu", "Cheddar"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
