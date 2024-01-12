@@ -72,7 +72,7 @@ public class HomeScene extends Scene {
 
     public void buildSelectPlayerSideBar() {
         selectPlayerSideBar = new VBox();
-        titleLabel = new TitleLabel("Préparez-vous à jouer");
+        titleLabel = new TitleLabel("Choisissez le mode de jeu:");
         titleLabel.minWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.maxWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.minHeightProperty().bind(selectPlayerSideBar.heightProperty().multiply(0.3));
@@ -193,7 +193,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"Débutant", "Avancé" , "Master"};
+        String[] botNames = {"Débutant", "Avancé", "Master"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
