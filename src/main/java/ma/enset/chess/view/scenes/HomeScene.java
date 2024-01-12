@@ -98,6 +98,7 @@ public class HomeScene extends Scene {
                 isLocalGame = true;
             }
         });
+
         localButton.setOnMouseEntered(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(64,60,52); -fx-text-fill: white;"));
         localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(40,36,36); -fx-text-fill: white;"));
         selectPlayerSideBar.getChildren().add(localButton);
