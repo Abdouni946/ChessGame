@@ -4,8 +4,8 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import ma.enset.chess.model.ai.AIInterface;
+import ma.enset.chess.model.ai.AdvancedAI;
 import ma.enset.chess.model.ai.BeginnerAI;
-import ma.enset.chess.model.ai.Cheddar;
 import ma.enset.chess.model.util.Colors;
 import ma.enset.chess.model.util.Pair;
 import ma.enset.chess.model.util.Tile;
@@ -19,8 +19,8 @@ public class AIBoardPresenter extends BoardPresenter {
         super(gameMediator);
         if (botName.equals("BeginnerAI"))
             this.bot = new BeginnerAI(game);
-        else if (botName.equals("Cheddar"))
-            this.bot = new Cheddar(game);
+        else if (botName.equals("AdvancedAI"))
+            this.bot = new AdvancedAI(game);
         else
             throw new IllegalArgumentException("Invalid botName.");
     }

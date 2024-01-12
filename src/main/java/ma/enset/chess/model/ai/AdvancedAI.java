@@ -8,10 +8,10 @@ import ma.enset.chess.model.util.Tile;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Cheddar implements AIInterface {
+public class AdvancedAI implements AIInterface {
     private ChessGameInterface game;
 
-    public Cheddar(ChessGameInterface game) {
+    public AdvancedAI(ChessGameInterface game) {
         this.game = game;
     }
 

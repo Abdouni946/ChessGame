@@ -192,7 +192,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"BeginnerAI", "Cheddar"};
+        String[] botNames = {"BeginnerAI", "AdvancedAI"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
