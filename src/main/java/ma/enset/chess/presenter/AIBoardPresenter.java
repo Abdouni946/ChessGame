@@ -21,6 +21,8 @@ public class AIBoardPresenter extends BoardPresenter {
             this.bot = new BeginnerAI(game);
         else if (botName.equals("Avancé"))
             this.bot = new AdvancedAI(game);
+        else if (botName.equals("Master"))
+            this.bot = new AdvancedAI(game);
         else
             throw new IllegalArgumentException("Invalid botName.");
     }

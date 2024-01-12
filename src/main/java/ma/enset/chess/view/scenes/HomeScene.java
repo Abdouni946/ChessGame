@@ -192,14 +192,14 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"Débutant", "Avancé"};
+        String[] botNames = {"Débutant", "Avancé" , "Master"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
             localButton.minWidthProperty().bind(selectBotSideBar.widthProperty().multiply(0.7));
             localButton.maxWidthProperty().bind(selectBotSideBar.widthProperty().multiply(0.7));
-            localButton.minHeightProperty().bind(localButton.minWidthProperty().multiply(0.5));
-            localButton.maxHeightProperty().bind(localButton.maxWidthProperty().multiply(0.5));
+            localButton.minHeightProperty().bind(localButton.minWidthProperty().multiply(0.3));
+            localButton.maxHeightProperty().bind(localButton.maxWidthProperty().multiply(0.3));
             localButton.setFont(new Font("Impact", 25));
             localButton.setStyle("-fx-background-color: rgb(40,36,36);-fx-text-fill: white;");
 

@@ -1,0 +1,106 @@
+package ma.enset.chess.model.ai;
+
+import ma.enset.chess.model.game.ChessGameInterface;
+import ma.enset.chess.model.util.Colors;
+import ma.enset.chess.model.util.Pair;
+import ma.enset.chess.model.util.Tile;
+
+import java.util.Iterator;
+import java.util.Set;
+
+public class MasterAI implements AIInterface {
+    private ChessGameInterface game;
+
+    public MasterAI(ChessGameInterface game) {
+        this.game = game;
+    }
+
+    private Pair<Tile, Tile> minimax(int depth) {
+        if (game.getCurrentPlayerColor() == Colors.WHITE)
+            return max(depth, Integer.MIN_VALUE, Integer.MAX_VALUE).pair;
+        return min(depth, Integer.MIN_VALUE, Integer.MAX_VALUE).pair;
+    }
+
+    private MasterAI.ReturnNodeFromMinimax min(int depth, int alpha, int beta) {
+        if (depth < 0)
+            throw new IllegalArgumentException("Depth cannot be less than 0 for minimax.");
+        else if (depth == 0)
+            return new MasterAI.ReturnNodeFromMinimax(null, evaluate(game));
+        else if (game.isGameInStalemate() || game.isCurrentPlayerInCheckmate())
+            return new MasterAI.ReturnNodeFromMinimax(null, Integer.MAX_VALUE);
+
+        MasterAI.ReturnNodeFromMinimax min = null;
+        Set<Pair<Tile, Tile>> availableMoves = game.getAvailableMovesForCurrentPlayer();
+        for (Iterator<Pair<Tile, Tile>> it = availableMoves.iterator(); it.hasNext(); ) {
+            Pair<Tile, Tile> move = it.next();
+            if (min == null)
+                min = new MasterAI.ReturnNodeFromMinimax(move, Integer.MAX_VALUE);
+            game.move(move.getKey().getRow(), move.getKey().getCol(), move.getValue().getRow(), move.getValue().getCol());
+            MasterAI.ReturnNodeFromMinimax returned = max(depth - 1, alpha, beta);
+            if (returned.value < min.value) {
+                min.pair = move;
+                min.value = returned.value;
+            }
+            game.undoLastMove();
+            if (returned.value < alpha)
+                break;
+            beta = Math.min(beta, returned.value);
+        }
+
+        return min;
+    }
+
+    private MasterAI.ReturnNodeFromMinimax max(int depth, int alpha, int beta) {
+        if (depth < 0)
+            throw new IllegalArgumentException("Depth cannot be less than 0 for minimax.");
+        else if (depth == 0)
+            return new MasterAI.ReturnNodeFromMinimax(null, evaluate(game));
+        else if (game.isGameInStalemate() || game.isCurrentPlayerInCheckmate())
+            return new MasterAI.ReturnNodeFromMinimax(null, Integer.MIN_VALUE);
+
+        MasterAI.ReturnNodeFromMinimax max = null;
+        Set<Pair<Tile, Tile>> availableMoves = game.getAvailableMovesForCurrentPlayer();
+        for (Iterator<Pair<Tile, Tile>> it = availableMoves.iterator(); it.hasNext(); ) {
+            Pair<Tile, Tile> move = it.next();
+            if (max == null)
+                max = new MasterAI.ReturnNodeFromMinimax(move, Integer.MIN_VALUE);
+            game.move(move.getKey().getRow(), move.getKey().getCol(), move.getValue().getRow(), move.getValue().getCol());
+            MasterAI.ReturnNodeFromMinimax returned = min(depth - 1, alpha, beta);
+            if (returned.value > max.value) {
+                max.pair = move;
+                max.value = returned.value;
+            }
+            game.undoLastMove();
+            if (returned.value > beta)
+                break;
+            alpha = Math.max(alpha, returned.value);
+        }
+
+        return max;
+    }
+
+    private int evaluate(ChessGameInterface game) {
+        return game.getMaterialHeuristic() + game.getPositionalHeuristic() * 5;
+    }
+
+    @Override
+    public Pair<Tile, Tile> move() {
+        Pair<Tile, Tile> move = minimax(3);
+        return move;
+    }
+
+    @Override
+    public void setGame(ChessGameInterface game) {
+        this.game = game;
+    }
+
+    class ReturnNodeFromMinimax {
+        Pair<Tile, Tile> pair;
+        int value;
+
+        ReturnNodeFromMinimax(Pair<Tile, Tile> pair, int value) {
+            this.pair = pair;
+            this.value = value;
+        }
+    }
+}
