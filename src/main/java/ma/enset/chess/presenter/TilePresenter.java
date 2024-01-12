@@ -27,10 +27,6 @@ public class TilePresenter implements Observable {
         observers = new LinkedList<>();
     }
 
-    /*
-     *  Getters
-     */
-
     public int getRow() {
         return row;
     }
@@ -58,10 +54,6 @@ public class TilePresenter implements Observable {
                 return "-fx-background-color: RGB(236, 236, 204);";
         }
     }
-
-    /*
-     *  Setters
-     */
 
     public void setPiece(Pieces piece) {
         if (this.piece == piece)

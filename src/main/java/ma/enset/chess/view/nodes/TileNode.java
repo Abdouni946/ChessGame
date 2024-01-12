@@ -135,11 +135,6 @@ public class TileNode extends StackPane implements Observer {
         }
     }
 
-    /*
-     *  Updates the style and image of the node based on the state of the ChessBoardTilePresenter.
-     *
-     *  This is called whenever the state of the ChessBoardTilePresenter is changed.
-     */
     @Override
     public void update() {
         style = tilePresenter.getStyle();

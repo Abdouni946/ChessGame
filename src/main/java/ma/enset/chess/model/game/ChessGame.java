@@ -306,7 +306,7 @@ public class ChessGame implements ChessGameInterface {
             throw new IllegalArgumentException("Move is invalid.");
 
         String notation = "";
-        // see if the move is "ambiguous"
+        // see if the move is ambiguous
         // make a mapping of all the pieces that can land on a space
         int occurrences = 0;
         for (Piece key : availableTilesCache.keySet())

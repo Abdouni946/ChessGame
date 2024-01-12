@@ -87,10 +87,6 @@ public abstract class BoardPresenter implements Observable {
         notifyObservers();
     }
 
-    /*
-     *  Getters
-     */
-
     public TilePresenter getChessBoardTilePresenter(int row, int col) {
         return tilePresenters[row][col];
     }
@@ -118,10 +114,6 @@ public abstract class BoardPresenter implements Observable {
     public List<String> getMovementNotations() {
         return movementNotations;
     }
-
-    /*
-     *  hoverInTo, hoverOutOf, and click are called when events are triggered in the view.
-     */
 
     public void hoverInTo(int row, int col) {
         if (animationIsPlaying || isGameOver)

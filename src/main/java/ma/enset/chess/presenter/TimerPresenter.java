@@ -26,9 +26,6 @@ public class TimerPresenter {
         return color;
     }
 
-    /*
-     * Starts the current timer, calculates passed duration.
-     */
     public void start() {
         if (gameOver)
             return;
@@ -44,9 +41,6 @@ public class TimerPresenter {
         }, initialDurationMillis - passedDurationMillis);
     }
 
-    /*
-     * Terminates the current timer, setting the passed duration.
-     */
     public void stop() {
         if (timer == null)
             return;

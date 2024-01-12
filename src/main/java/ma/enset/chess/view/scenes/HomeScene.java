@@ -34,7 +34,7 @@ public class HomeScene extends Scene {
     public HomeScene(double width, double height) {
         super(new VBox(), width, height);
         root = (VBox) getRoot();
-        root.setStyle("-fx-background-color: #382c2c;"); // Dark background color
+        root.setStyle("-fx-background-color: #382c2c;");
         boardContainer = new HBox();
         topBar = new TopBarNode();
         board = new BoardNode(new LocalBoardPresenter());

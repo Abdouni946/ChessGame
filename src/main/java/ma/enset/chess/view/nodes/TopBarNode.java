@@ -21,7 +21,7 @@ public class TopBarNode extends Pane {
     private static final int TOP_BAR_HEIGHT = 40;
     private static final String TOP_BAR_STYLE = "-fx-background-color: rgb(128,156,84)\n;",
             HIGHLIGHTED_TOP_BAR_BUTTON_STYLE = "-fx-background-color: rgb(240,236,204);",
-            HOME_ICON_FILE_PATH = "file:./src/main/java/ma/enset/view/resources/home_icon.png";
+            HOME_ICON_FILE_PATH = "file:./src/main/java/ma/enset/chess/view/resources/home_icon.png";
     private static final Insets TOP_BAR_PADDING = new Insets(5, 5, 5, 5);
 
     public TopBarNode() {
