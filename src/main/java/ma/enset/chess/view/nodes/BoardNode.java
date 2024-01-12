@@ -149,13 +149,13 @@ public class BoardNode extends Pane implements Observer {
         if (presenter.isGameInStalemate()) {
             buildMessageNode("Pat! (Partie Nulle)");
         } else if (presenter.isPlayerInCheckmate() && presenter.getCurrentPlayersColor() == Colors.BLACK) {
-            buildMessageNode("le Blanc a gagné!");
+            buildMessageNode("Blanc a gagné!");
         } else if (presenter.isPlayerInCheckmate() && presenter.getCurrentPlayersColor() == Colors.WHITE) {
-            buildMessageNode("le Noir a gagné!");
+            buildMessageNode("Noir a gagné!");
         } else if (presenter.isWhiteOutOfTime()) {
-            buildMessageNode("le Noir a gagné!");
+            buildMessageNode("Noir a gagné!");
         } else if (presenter.isBlackOutOfTime()) {
-            buildMessageNode("le Blanc a gagné!");
+            buildMessageNode("Blanc a gagné!");
         } else {
             return;
         }

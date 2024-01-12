@@ -20,7 +20,7 @@ public class GameMediator implements Mediator {
     }
 
     public GameMediator(MediatorConstructionFlags flag, int duration) {
-        this(flag, duration, "AdvancedAI");
+        this(flag, duration, "Avancé");
     }
 
     public GameMediator(MediatorConstructionFlags flag) {

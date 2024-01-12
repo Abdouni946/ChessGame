@@ -41,17 +41,17 @@ public class TilePresenter implements Observable {
 
     public String getStyle() {
         if (hoveredOver && (available || containsPieceOfCurrentPlayersColor))
-            return "-fx-background-color: rgb(155, 49, 148);";
+            return "-fx-background-color: rgb(247, 248, 131);";
         if (row % 2 == col % 2) {
             if (available)
                 return "-fx-background-color: rgb(220,220,220);";
             else
-                return "-fx-background-color: rgb(128,156,84)";
+                return "-fx-background-color: rgb(128,156,84);";
         } else {
             if (available)
                 return "-fx-background-color: rgb(192,192,192);";
             else
-                return "-fx-background-color: RGB(236, 236, 204);";
+                return "-fx-background-color: rgb(236, 236, 204);";
         }
     }
 
