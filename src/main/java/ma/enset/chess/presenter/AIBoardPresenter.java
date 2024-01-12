@@ -17,9 +17,9 @@ public class AIBoardPresenter extends BoardPresenter {
 
     public AIBoardPresenter(GameMediator gameMediator, String botName) {
         super(gameMediator);
-        if (botName.equals("BeginnerAI"))
+        if (botName.equals("Débutant"))
             this.bot = new BeginnerAI(game);
-        else if (botName.equals("AdvancedAI"))
+        else if (botName.equals("Avancé"))
             this.bot = new AdvancedAI(game);
         else
             throw new IllegalArgumentException("Invalid botName.");

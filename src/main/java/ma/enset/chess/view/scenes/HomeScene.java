@@ -38,7 +38,7 @@ public class HomeScene extends Scene {
         boardContainer = new HBox();
         topBar = new TopBarNode();
         board = new BoardNode(new LocalBoardPresenter());
-        board.buildMessageNode("Welcome!");
+        board.buildMessageNode("Bienvenue!");
         board.displayMessageNode();
         boardContainer.getChildren().add(board);
         root.getChildren().addAll(topBar, boardContainer);
@@ -72,7 +72,7 @@ public class HomeScene extends Scene {
 
     public void buildSelectPlayerSideBar() {
         selectPlayerSideBar = new VBox();
-        titleLabel = new TitleLabel("Get ready to play");
+        titleLabel = new TitleLabel("Préparez-vous à jouer");
         titleLabel.minWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.maxWidthProperty().bind(selectPlayerSideBar.widthProperty().subtract(20));
         titleLabel.minHeightProperty().bind(selectPlayerSideBar.heightProperty().multiply(0.3));
@@ -82,7 +82,7 @@ public class HomeScene extends Scene {
         selectPlayerSideBar.setSpacing(20);
         selectPlayerSideBar.setAlignment(Pos.CENTER);
 
-        Button localButton = new Button("Locally");
+        Button localButton = new Button("Localement");
         localButton.setFont(new Font("Impact", 25));
         localButton.minWidthProperty().bind(titleLabel.widthProperty());
         localButton.maxWidthProperty().bind(titleLabel.widthProperty());
@@ -102,7 +102,7 @@ public class HomeScene extends Scene {
         localButton.setOnMouseExited(mouseEvent -> localButton.setStyle("-fx-background-color: rgb(40,36,36); -fx-text-fill: white;"));
         selectPlayerSideBar.getChildren().add(localButton);
 
-        Button computerButton = new Button("vs. Computer");
+        Button computerButton = new Button("Contre l'ordinateur");
         computerButton.setFont(new Font("Impact", 25));
         computerButton.minWidthProperty().bind(titleLabel.widthProperty());
         computerButton.maxWidthProperty().bind(titleLabel.widthProperty());
@@ -125,7 +125,7 @@ public class HomeScene extends Scene {
 
     public void buildSelectTimeSideBar() {
         selectTimeSideBar = new VBox();
-        TitleLabel timeTitle = new TitleLabel("Time Limit:");
+        TitleLabel timeTitle = new TitleLabel("Limite de temps:");
         timeTitle.minWidthProperty().bind(selectTimeSideBar.widthProperty().subtract(20));
         timeTitle.maxWidthProperty().bind(selectTimeSideBar.widthProperty().subtract(20));
         timeTitle.minHeightProperty().bind(selectTimeSideBar.heightProperty().multiply(0.3));
@@ -175,7 +175,7 @@ public class HomeScene extends Scene {
 
     public void buildSelectBotSideBar() {
         selectBotSideBar = new VBox();
-        TitleLabel botTitle = new TitleLabel("Select a bot:");
+        TitleLabel botTitle = new TitleLabel("Sélectionnez un adversaire:");
         botTitle.minWidthProperty().bind(selectBotSideBar.widthProperty().subtract(20));
         botTitle.maxWidthProperty().bind(selectBotSideBar.widthProperty().subtract(20));
         botTitle.minHeightProperty().bind(selectBotSideBar.heightProperty().multiply(0.3));
@@ -192,7 +192,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"BeginnerAI", "AdvancedAI"};
+        String[] botNames = {"Débutant", "Avancé"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);
