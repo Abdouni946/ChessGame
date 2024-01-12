@@ -4,7 +4,7 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import ma.enset.chess.model.ai.AIInterface;
-import ma.enset.chess.model.ai.Bleu;
+import ma.enset.chess.model.ai.BeginnerAI;
 import ma.enset.chess.model.ai.Cheddar;
 import ma.enset.chess.model.util.Colors;
 import ma.enset.chess.model.util.Pair;
@@ -17,8 +17,8 @@ public class AIBoardPresenter extends BoardPresenter {
 
     public AIBoardPresenter(GameMediator gameMediator, String botName) {
         super(gameMediator);
-        if (botName.equals("Bleu"))
-            this.bot = new Bleu(game);
+        if (botName.equals("BeginnerAI"))
+            this.bot = new BeginnerAI(game);
         else if (botName.equals("Cheddar"))
             this.bot = new Cheddar(game);
         else

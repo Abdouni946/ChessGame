@@ -90,7 +90,6 @@ public class HomeScene extends Scene {
         localButton.setMaxHeight(60);
         localButton.setStyle("-fx-background-color: rgb(40,36,36); -fx-text-fill: white;");
 
-
         localButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -193,7 +192,7 @@ public class HomeScene extends Scene {
         buttonContainer.maxWidthProperty().bind(selectBotSideBar.widthProperty());
         buttonContainer.setAlignment(Pos.CENTER);
 
-        String[] botNames = {"Bleu", "Cheddar"};
+        String[] botNames = {"BeginnerAI", "Cheddar"};
 
         for (String botName : botNames) {
             Button localButton = new Button(botName);

@@ -6,10 +6,10 @@ import ma.enset.chess.model.util.Tile;
 
 import java.util.Set;
 
-public class Bleu implements AIInterface {
+public class BeginnerAI implements AIInterface {
     private ChessGameInterface game;
 
-    public Bleu(ChessGameInterface game) {
+    public BeginnerAI(ChessGameInterface game) {
         this.game = game;
     }
 
