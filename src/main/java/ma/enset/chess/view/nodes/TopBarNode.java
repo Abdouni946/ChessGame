@@ -3,6 +3,7 @@ package ma.enset.chess.view.nodes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -12,13 +13,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import ma.enset.chess.view.scenes.HomeScene;
-import javafx.scene.layout.VBox;
-import javafx.scene.Scene;
-import javafx.scene.text.Text;
 
 public class TopBarNode extends Pane {
     private HBox root;
@@ -28,7 +27,7 @@ public class TopBarNode extends Pane {
     private static final String TOP_BAR_STYLE = "-fx-background-color: rgb(128,156,84)\n;",
             HIGHLIGHTED_TOP_BAR_BUTTON_STYLE = "-fx-background-color: rgb(240,236,204);",
             HOME_ICON_FILE_PATH = "file:./src/main/java/ma/enset/chess/view/resources/home_icon.png",
-            INFO_ICON_FILE_PATH = "file:./src/main/java/ma/enset/chess/view/resources/info.png";
+            INFO_ICON_FILE_PATH = "file:./src/main/java/ma/enset/chess/view/resources/info_icon.png";
 
     private static final Insets TOP_BAR_PADDING = new Insets(5, 5, 5, 5);
 
@@ -111,8 +110,8 @@ public class TopBarNode extends Pane {
         InfoButton.setOnMouseEntered(mouseEvent -> InfoButton.setStyle(HIGHLIGHTED_TOP_BAR_BUTTON_STYLE));
         InfoButton.setOnMouseExited(mouseEvent -> InfoButton.setStyle(TOP_BAR_STYLE));
 
-
     }
+
     private TextFlow getFormattedChessRules() {
         // Create formatted Text nodes for each section of the rules
         Text step1Title = new Text("Étape 1. Comment les pièces d'échecs se déplacent\n");
@@ -175,7 +174,6 @@ public class TopBarNode extends Pane {
                 "\n" +
                 "L'échec et mat se produit lorsque le roi est attaqué par une autre pièce et n'a aucun moyen de s'échapper. A ce moment-là, le jeu est terminé. Mais l’échec et mat ne se produit pas sans préparation.");
 
-
         TextFlow textFlow = new TextFlow(
                 step1Title
                 , step1
@@ -208,7 +206,6 @@ public class TopBarNode extends Pane {
 
         return textFlow;
     }
-
 
     private void buildHomeButton() {
         homeButton = new Button();

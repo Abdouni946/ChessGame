@@ -17,9 +17,6 @@ public class ChessGameInterfaceTestSuite {
             BK = BLACK_KING, BQ = BLACK_QUEEN, BR = BLACK_ROOK,
             BB = BLACK_BISHOP, Bk = BLACK_KNIGHT, BP = BLACK_PAWN, NN = null;
 
-    /*
-     * Helper method to check if all the spaces that are marked as true in spaces are contained in set.
-     */
     public void spacesAreContainedInSet(boolean[][] spaces, Set<Tile> set) {
         for (int i = 0; i < spaces.length; i++)
             for (int j = 0; j < spaces[0].length; j++)
@@ -27,9 +24,6 @@ public class ChessGameInterfaceTestSuite {
                     assertTrue(set.contains(Tile.getTile(i, j)));
     }
 
-    /*
-     * Helper method to check that all the spaces that are marked as false in spaces are not contained in set.
-     */
     public void spacesAreNotContainedInSet(boolean[][] spaces, Set<Tile> set) {
         for (int i = 0; i < spaces.length; i++)
             for (int j = 0; j < spaces[0].length; j++)
