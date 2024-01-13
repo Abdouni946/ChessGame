@@ -21,22 +21,22 @@ public class MasterAI implements AIInterface {
         return min(depth, Integer.MIN_VALUE, Integer.MAX_VALUE).pair;
     }
 
-    private MasterAI.ReturnNodeFromMinimax min(int depth, int alpha, int beta) {
+    private ReturnNodeFromMinimax min(int depth, int alpha, int beta) {
         if (depth < 0)
             throw new IllegalArgumentException("Depth cannot be less than 0 for minimax.");
         else if (depth == 0)
-            return new MasterAI.ReturnNodeFromMinimax(null, evaluate(game));
+            return new ReturnNodeFromMinimax(null, evaluate(game));
         else if (game.isGameInStalemate() || game.isCurrentPlayerInCheckmate())
-            return new MasterAI.ReturnNodeFromMinimax(null, Integer.MAX_VALUE);
+            return new ReturnNodeFromMinimax(null, Integer.MAX_VALUE);
 
-        MasterAI.ReturnNodeFromMinimax min = null;
+        ReturnNodeFromMinimax min = null;
         Set<Pair<Tile, Tile>> availableMoves = game.getAvailableMovesForCurrentPlayer();
         for (Iterator<Pair<Tile, Tile>> it = availableMoves.iterator(); it.hasNext(); ) {
             Pair<Tile, Tile> move = it.next();
             if (min == null)
-                min = new MasterAI.ReturnNodeFromMinimax(move, Integer.MAX_VALUE);
+                min = new ReturnNodeFromMinimax(move, Integer.MAX_VALUE);
             game.move(move.getKey().getRow(), move.getKey().getCol(), move.getValue().getRow(), move.getValue().getCol());
-            MasterAI.ReturnNodeFromMinimax returned = max(depth - 1, alpha, beta);
+            ReturnNodeFromMinimax returned = max(depth - 1, alpha, beta);
             if (returned.value < min.value) {
                 min.pair = move;
                 min.value = returned.value;
@@ -50,22 +50,22 @@ public class MasterAI implements AIInterface {
         return min;
     }
 
-    private MasterAI.ReturnNodeFromMinimax max(int depth, int alpha, int beta) {
+    private ReturnNodeFromMinimax max(int depth, int alpha, int beta) {
         if (depth < 0)
             throw new IllegalArgumentException("Depth cannot be less than 0 for minimax.");
         else if (depth == 0)
-            return new MasterAI.ReturnNodeFromMinimax(null, evaluate(game));
+            return new ReturnNodeFromMinimax(null, evaluate(game));
         else if (game.isGameInStalemate() || game.isCurrentPlayerInCheckmate())
-            return new MasterAI.ReturnNodeFromMinimax(null, Integer.MIN_VALUE);
+            return new ReturnNodeFromMinimax(null, Integer.MIN_VALUE);
 
-        MasterAI.ReturnNodeFromMinimax max = null;
+        ReturnNodeFromMinimax max = null;
         Set<Pair<Tile, Tile>> availableMoves = game.getAvailableMovesForCurrentPlayer();
         for (Iterator<Pair<Tile, Tile>> it = availableMoves.iterator(); it.hasNext(); ) {
             Pair<Tile, Tile> move = it.next();
             if (max == null)
-                max = new MasterAI.ReturnNodeFromMinimax(move, Integer.MIN_VALUE);
+                max = new ReturnNodeFromMinimax(move, Integer.MIN_VALUE);
             game.move(move.getKey().getRow(), move.getKey().getCol(), move.getValue().getRow(), move.getValue().getCol());
-            MasterAI.ReturnNodeFromMinimax returned = min(depth - 1, alpha, beta);
+            ReturnNodeFromMinimax returned = min(depth - 1, alpha, beta);
             if (returned.value > max.value) {
                 max.pair = move;
                 max.value = returned.value;
